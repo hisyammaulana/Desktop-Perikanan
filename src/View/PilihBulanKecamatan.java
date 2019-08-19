@@ -7,6 +7,8 @@ package View;
 
 import javax.swing.JFrame;
 import View.Home;
+import View.Table.TableAllKecamatanViewByBulanKolam;
+import View.Table.TableKecamatanViewByBulanKolam;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -17,32 +19,18 @@ import javax.swing.JLabel;
  *
  * @author tantowi
  */
-public class PilihBulanKecamatan extends javax.swing.JFrame implements ActionListener{
+public class PilihBulanKecamatan extends javax.swing.JFrame{
 //    public String kolam1 = 
      /**
      * Creates new form halaman2
      */
-//    public PilihBulanKecamatan(String tambak) {
-//        initComponents();
-//        setExtendedState(JFrame.MAXIMIZED_BOTH);
-//    }
+
     
-//    labelKecamatan.addMouseListener(new MouseAdapter() {
-//            public void mouseClicked(MouseEvent event) {
-//                PilihKecamatan pk = new PilihKecamatan(kolam);
-//                pk.setVisible(true);
-//                dispose();
-//            }
-//        });
+    
     public PilihBulanKecamatan() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         
-    }
-
-    PilihBulanKecamatan(String kolam) {
-        initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
 
@@ -50,19 +38,55 @@ public class PilihBulanKecamatan extends javax.swing.JFrame implements ActionLis
      *
      */
 
-//    public PilihBulanKecamatan(String kolam) {
-//        initComponents();
-//        setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        
-////        labelKecamatan.addMouseListener(new MouseAdapter() {
-////            public void mouseClicked(MouseEvent event) {
-////                PilihKecamatan pk = new PilihKecamatan(kolam);
-////                pk.setVisible(true);
-////                dispose();
-////            }
-////        });
-//
-//    }
+    public PilihBulanKecamatan(String table) {
+        initComponents();
+//        test.setText(table); 
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        if (table == "tbl_kolam") {
+            labelKecamatan.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent event) {
+                TableKecamatanViewByBulanKolam pk = new TableKecamatanViewByBulanKolam (table);
+                pk.setVisible(true);
+                dispose();
+                }
+            });
+            
+            labelBulan.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent event) {
+                TableAllKecamatanViewByBulanKolam pk = new TableAllKecamatanViewByBulanKolam (table);
+                pk.setVisible(true);
+                dispose();
+                }
+            });            
+            
+        }else if(table == "tbl_luas_lahan_rtp"){
+            labelKecamatan.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent event) {
+                TableKecamatanViewByBulanKolam pk = new TableKecamatanViewByBulanKolam (table);
+                pk.setVisible(true);
+                dispose();
+                }
+            });
+        }else if(table == "tbl_produksi_benih"){
+            labelKecamatan.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent event) {
+                TableAllKecamatanViewByBulanKolam pk = new TableAllKecamatanViewByBulanKolam (table);
+                pk.setVisible(true);
+                dispose();
+                }
+            });
+        }else if(table == "tbl_produksi_tambak"){
+            labelKecamatan.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent event) {
+                TableKecamatanViewByBulanKolam pk = new TableKecamatanViewByBulanKolam (table);
+                pk.setVisible(true);
+                dispose();
+                }
+            });
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,7 +95,6 @@ public class PilihBulanKecamatan extends javax.swing.JFrame implements ActionLis
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -81,7 +104,7 @@ public class PilihBulanKecamatan extends javax.swing.JFrame implements ActionLis
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelBulan = new javax.swing.JLabel();
         labelKecamatan = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
 
@@ -140,44 +163,19 @@ public class PilihBulanKecamatan extends javax.swing.JFrame implements ActionLis
         );
 
         jPanel1.setBackground(new java.awt.Color(220, 240, 250));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Pilih Bulan");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 117;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(240, 22, 0, 0);
-        jPanel1.add(jLabel5, gridBagConstraints);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Pilih kecamatan");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 81;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(240, 211, 0, 0);
-        jPanel1.add(jLabel4, gridBagConstraints);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/icon.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        labelBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/icon.png"))); // NOI18N
+        labelBulan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                labelBulanMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(120, 22, 0, 369);
-        jPanel1.add(jLabel2, gridBagConstraints);
 
         labelKecamatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/icon.png"))); // NOI18N
         labelKecamatan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -185,14 +183,6 @@ public class PilihBulanKecamatan extends javax.swing.JFrame implements ActionLis
                 labelKecamatanMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(120, 212, 0, 0);
-        jPanel1.add(labelKecamatan, gridBagConstraints);
 
         jButton13.setText("<- Kembali");
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -200,12 +190,44 @@ public class PilihBulanKecamatan extends javax.swing.JFrame implements ActionLis
                 jButton13MouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(54, 50, 100, 0);
-        jPanel1.add(jButton13, gridBagConstraints);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(335, 335, 335)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(labelKecamatan))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelBulan)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jButton13)))
+                .addGap(369, 369, 369))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelKecamatan)
+                    .addComponent(labelBulan)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(54, 54, 54)
+                .addComponent(jButton13))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,11 +253,11 @@ public class PilihBulanKecamatan extends javax.swing.JFrame implements ActionLis
 //        dispose();
     }//GEN-LAST:event_labelKecamatanMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void labelBulanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelBulanMouseClicked
         // TODO add your handling code here:
-        new PilihBulan().show();
-        dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
+//        new PilihBulan().show();
+//        dispose();
+    }//GEN-LAST:event_labelBulanMouseClicked
 
     private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
         // TODO add your handling code here:
@@ -284,20 +306,15 @@ public class PilihBulanKecamatan extends javax.swing.JFrame implements ActionLis
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel labelBulan;
     private javax.swing.JLabel labelKecamatan;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
-    }
-
-//    @Override
+   
   
 }

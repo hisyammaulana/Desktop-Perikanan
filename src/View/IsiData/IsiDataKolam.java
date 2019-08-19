@@ -281,7 +281,7 @@ public class IsiDataKolam extends javax.swing.JFrame {
             }
         });
 
-        cb_kecamatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Pilih Kecamatan ---", "BANJARHARJO", "BANTARKAWUNG", "BREBES", "BUMIAYU", "BULAKAMBA", "JATIBARANG", "KERSANA", "KETANGGUNGAN", "LARANGAN", "LOSARI", "PAGUYANGAN", "SALEM", "SIRAMPOG", "SONGGOM", "TANJUNG", "TONJONG", "WANASARI" }));
+        cb_kecamatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH KECAMATAN ---", "BANJARHARJO", "BANTARKAWUNG", "BREBES", "BUMIAYU", "BULAKAMBA", "JATIBARANG", "KERSANA", "KETANGGUNGAN", "LARANGAN", "LOSARI", "PAGUYANGAN", "SALEM", "SIRAMPOG", "SONGGOM", "TANJUNG", "TONJONG", "WANASARI" }));
 
         cb_bulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH BULAN ---", "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER" }));
 

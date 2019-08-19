@@ -39,6 +39,9 @@ public class PilihKecamatan extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
+    PilihKecamatan(String[] table) {
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

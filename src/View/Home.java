@@ -18,7 +18,12 @@ import javax.swing.JPanel;
  *
  * @author tantowi
  */
-public class Home extends javax.swing.JFrame implements ActionListener{
+public class Home extends javax.swing.JFrame{
+
+    public String table[] = {"tbl_kolam", "tbl_luas_lahan_rtp","tbl_penyuluh", 
+                        "tbl_produksi_benih", "tbl_produksi_pengolahan",
+                        "tbl_produksi_tambak"};
+    
     /**
      * 
      * Creates new form Home
@@ -44,7 +49,7 @@ public class Home extends javax.swing.JFrame implements ActionListener{
         jLabel19 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        panelPenghasilan = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         panelKolam = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -56,7 +61,7 @@ public class Home extends javax.swing.JFrame implements ActionListener{
         jLabel12 = new javax.swing.JLabel();
         panelBenih = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        panelPengolahan = new javax.swing.JPanel();
+        panelProduksi = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         btnKolam = new javax.swing.JButton();
         btnTambak = new javax.swing.JButton();
@@ -116,27 +121,27 @@ public class Home extends javax.swing.JFrame implements ActionListener{
                 .addGap(0, 20, Short.MAX_VALUE))
         );
 
-        jPanel6.setBackground(new java.awt.Color(132, 205, 238));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelPenghasilan.setBackground(new java.awt.Color(132, 205, 238));
+        panelPenghasilan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
+                panelPenghasilanMouseClicked(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("Data Penghasilan");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelPenghasilanLayout = new javax.swing.GroupLayout(panelPenghasilan);
+        panelPenghasilan.setLayout(panelPenghasilanLayout);
+        panelPenghasilanLayout.setHorizontalGroup(
+            panelPenghasilanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPenghasilanLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelPenghasilanLayout.setVerticalGroup(
+            panelPenghasilanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
 
@@ -229,7 +234,7 @@ public class Home extends javax.swing.JFrame implements ActionListener{
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(500, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,27 +265,27 @@ public class Home extends javax.swing.JFrame implements ActionListener{
             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
 
-        panelPengolahan.setBackground(new java.awt.Color(132, 205, 238));
-        panelPengolahan.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelProduksi.setBackground(new java.awt.Color(132, 205, 238));
+        panelProduksi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelPengolahanMouseClicked(evt);
+                panelProduksiMouseClicked(evt);
             }
         });
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel11.setText("Produksi Pengolahan");
 
-        javax.swing.GroupLayout panelPengolahanLayout = new javax.swing.GroupLayout(panelPengolahan);
-        panelPengolahan.setLayout(panelPengolahanLayout);
-        panelPengolahanLayout.setHorizontalGroup(
-            panelPengolahanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPengolahanLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelProduksiLayout = new javax.swing.GroupLayout(panelProduksi);
+        panelProduksi.setLayout(panelProduksiLayout);
+        panelProduksiLayout.setHorizontalGroup(
+            panelProduksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProduksiLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelPengolahanLayout.setVerticalGroup(
-            panelPengolahanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelProduksiLayout.setVerticalGroup(
+            panelProduksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
 
@@ -328,13 +333,13 @@ public class Home extends javax.swing.JFrame implements ActionListener{
                             .addComponent(btnProduksiPengolahan))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelPengolahan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelProduksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelLuas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelBenih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelTambak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelKolam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelPenghasilan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(283, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -347,7 +352,7 @@ public class Home extends javax.swing.JFrame implements ActionListener{
                         .addGap(18, 18, 18)
                         .addComponent(panelTambak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelPenghasilan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(panelLuas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
@@ -371,7 +376,7 @@ public class Home extends javax.swing.JFrame implements ActionListener{
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(panelPengolahan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelProduksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(panelBenih, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(94, Short.MAX_VALUE))
@@ -397,27 +402,27 @@ public class Home extends javax.swing.JFrame implements ActionListener{
 
     private void panelKolamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelKolamMouseClicked
         // TODO add your handling code here:
-//        new PilihBulanKecamatan(kolam).show();
-//        dispose();
+        new PilihBulanKecamatan(table[0].toString()).show();
+        dispose();
     }//GEN-LAST:event_panelKolamMouseClicked
 
     private void panelTambakMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTambakMouseClicked
         // TODO add your handling code here:
-//        new PilihBulanKecamatan(tambak).show();
-//        dispose();
+        new PilihBulanKecamatan(table[5].toString()).show();
+        dispose();
     }//GEN-LAST:event_panelTambakMouseClicked
 
-    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-        // TODO add your handling code here:
+    private void panelPenghasilanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPenghasilanMouseClicked
+        // TODO add your handling code here:implements ActionListener
         new PilihBulan().show();
         dispose();
-    }//GEN-LAST:event_jPanel6MouseClicked
+    }//GEN-LAST:event_panelPenghasilanMouseClicked
 
     private void panelLuasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelLuasMouseClicked
         // TODO add your handling code here:
         
-//        new PilihBulanKecamatan(luas).show();
-//        dispose();
+        new PilihBulanKecamatan(table[1].toString()).show();
+        dispose();
     }//GEN-LAST:event_panelLuasMouseClicked
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
@@ -428,15 +433,15 @@ public class Home extends javax.swing.JFrame implements ActionListener{
 
     private void panelBenihMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBenihMouseClicked
         // TODO add your handling code here:
-        new PilihBulan().show();
+        new PilihBulanKecamatan(table[3].toString()).show();
         dispose();
     }//GEN-LAST:event_panelBenihMouseClicked
 
-    private void panelPengolahanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPengolahanMouseClicked
+    private void panelProduksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProduksiMouseClicked
         // TODO add your handling code here:
-        new PilihBulan().show();
+        new PilihBulanKecamatan(table[4].toString()).show();
         dispose();
-    }//GEN-LAST:event_panelPengolahanMouseClicked
+    }//GEN-LAST:event_panelProduksiMouseClicked
 
     private void btnKolamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKolamActionPerformed
         // TODO add your handling code here:
@@ -502,36 +507,13 @@ public class Home extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel panelBenih;
     private javax.swing.JPanel panelKolam;
     private javax.swing.JPanel panelLuas;
-    private javax.swing.JPanel panelPengolahan;
+    private javax.swing.JPanel panelPenghasilan;
+    private javax.swing.JPanel panelProduksi;
     private javax.swing.JPanel panelTambak;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
-     String kolam = "tbl_kolam";
-     String luas = "tbl_luas_lahan_rtp";
-     String benih = "tbl_produksi_benih";
-     String pengolahan = "tbl_produksi_pengolahan";
-     String tambak = "tbl_produksi_tambak";
-     
-        if (e.getSource() == btnKolam) {
-            PilihBulanKecamatan bulanKecamatan = new PilihBulanKecamatan(kolam);
-            bulanKecamatan.setEnabled(true);
-            dispose();  
-        }else if(e.getSource() == btnLuas){
-            new PilihBulanKecamatan(luas).show();
-            dispose(); 
-        }else if(e.getSource() == btnTambak){
-            new PilihBulanKecamatan(tambak).show();
-            dispose();
-        }
-
-        
-    }
 
 }

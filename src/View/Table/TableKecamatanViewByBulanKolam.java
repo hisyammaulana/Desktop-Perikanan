@@ -48,6 +48,7 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
     public TableKecamatanViewByBulanKolam(String table) {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        test.setText(table);
         tblmodel = new DefaultTableModel(null,header);
         tbl_kolam.setModel(tblmodel);
 
@@ -107,7 +108,6 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cb_bulan = new javax.swing.JComboBox<>();
         btnLihat = new javax.swing.JButton();
-        test = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -270,8 +270,6 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
             }
         });
 
-        test.setText("jLabel4");
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -280,8 +278,6 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(test)
-                .addGap(146, 146, 146)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(cbKecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,14 +298,14 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
                         .addComponent(jButton14))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(cbKecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel3)
                                 .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnLihat))
-                            .addComponent(test))))
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(cbKecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -429,6 +425,5 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_kolam;
-    private javax.swing.JLabel test;
     // End of variables declaration//GEN-END:variables
 }

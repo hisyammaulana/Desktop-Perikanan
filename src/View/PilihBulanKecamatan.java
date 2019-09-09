@@ -7,8 +7,14 @@ package View;
 
 import javax.swing.JFrame;
 import View.Home;
+import View.Table.TableAllKecamatanViewByBulanBenih;
 import View.Table.TableAllKecamatanViewByBulanKolam;
+import View.Table.TableAllKecamatanViewByBulanProduksi;
+import View.Table.TableAllKecamatanViewByBulanTambak;
+import View.Table.TableKecamatanViewByBulanBenih;
 import View.Table.TableKecamatanViewByBulanKolam;
+import View.Table.TableKecamatanViewByBulanProduksi;
+import View.Table.TableKecamatanViewByBulanTambak;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -19,21 +25,17 @@ import javax.swing.JLabel;
  *
  * @author tantowi
  */
+// kolamv, tambak, produksi pengolahan, produksi benih
 public class PilihBulanKecamatan extends javax.swing.JFrame{
 //    public String kolam1 = 
      /**
      * Creates new form halaman2
      */
-
-    
-    
+   
     public PilihBulanKecamatan() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
     }
-
-
     /**
      *
      */
@@ -60,18 +62,18 @@ public class PilihBulanKecamatan extends javax.swing.JFrame{
                 }
             });            
             
-        }else if(table == "tbl_luas_lahan_rtp"){
+        }else if(table == "tbl_produksi_benih"){
             labelKecamatan.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent event) {
-                TableKecamatanViewByBulanKolam pk = new TableKecamatanViewByBulanKolam (table);
+                TableKecamatanViewByBulanBenih pk = new TableKecamatanViewByBulanBenih (table);
                 pk.setVisible(true);
                 dispose();
                 }
             });
-        }else if(table == "tbl_produksi_benih"){
-            labelKecamatan.addMouseListener(new MouseAdapter() {
+            
+            labelBulan.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent event) {
-                TableAllKecamatanViewByBulanKolam pk = new TableAllKecamatanViewByBulanKolam (table);
+                TableAllKecamatanViewByBulanBenih pk = new TableAllKecamatanViewByBulanBenih (table);
                 pk.setVisible(true);
                 dispose();
                 }
@@ -79,11 +81,36 @@ public class PilihBulanKecamatan extends javax.swing.JFrame{
         }else if(table == "tbl_produksi_tambak"){
             labelKecamatan.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent event) {
-                TableKecamatanViewByBulanKolam pk = new TableKecamatanViewByBulanKolam (table);
+                TableKecamatanViewByBulanTambak pk = new TableKecamatanViewByBulanTambak (table);
                 pk.setVisible(true);
                 dispose();
                 }
             });
+            
+            labelBulan.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent event) {
+                TableAllKecamatanViewByBulanTambak pk = new TableAllKecamatanViewByBulanTambak (table);
+                pk.setVisible(true);
+                dispose();
+                }
+            });
+            
+        }else if(table == "tbl_produksi_pengolahan"){
+            labelKecamatan.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent event) {
+                TableKecamatanViewByBulanProduksi pk = new TableKecamatanViewByBulanProduksi(table);
+                pk.setVisible(true);
+                dispose();
+                }
+            });
+            
+            labelBulan.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent event) {
+                TableAllKecamatanViewByBulanProduksi pk = new TableAllKecamatanViewByBulanProduksi(table);
+                pk.setVisible(true);
+                dispose();
+                }
+            });            
         }
     }
     

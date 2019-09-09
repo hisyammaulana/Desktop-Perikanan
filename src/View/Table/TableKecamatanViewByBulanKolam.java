@@ -15,6 +15,9 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -359,8 +362,12 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton14MouseClicked
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        // TODO add your handling code here:
-//        new IsiDataKolam().show();
+        try {
+            // TODO add your handling code here:
+            new IsiDataKolam().show();
+        } catch (SQLException ex) {
+            Logger.getLogger(TableKecamatanViewByBulanKolam.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dispose();
     }//GEN-LAST:event_btnTambahActionPerformed
 

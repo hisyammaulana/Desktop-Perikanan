@@ -38,11 +38,18 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
         tblmodel = new DefaultTableModel(null, header);
         tbl_kolam.setModel(tblmodel);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        try {
-            pro.Tampil(this);
-        } catch (SQLException ex) {
-            Logger.getLogger(TableAllKecamatanViewByBulanProduksi.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            pro.Tampil(this);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(TableAllKecamatanViewByBulanProduksi.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
+
+    public TableAllKecamatanViewByBulanProduksi(String table) {
+        initComponents();
+        tblmodel = new DefaultTableModel(null, header);
+        tbl_kolam.setModel(tblmodel);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     
     public void setColomnWidth(int kolom)

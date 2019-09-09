@@ -22,12 +22,17 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
     public TableKecamatanViewByBulanProduksi() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
-        jTable1.getTableHeader().setFont(new Font("Segoee UI", Font.BOLD, 12));
-        jTable1.getTableHeader().setOpaque(false);
-        jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
-        jTable1.getTableHeader().setForeground(new Color(255,255,255));
-        jTable1.setRowHeight(25);
+//        
+//        jTable1.getTableHeader().setFont(new Font("Segoee UI", Font.BOLD, 12));
+//        jTable1.getTableHeader().setOpaque(false);
+//        jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
+//        jTable1.getTableHeader().setForeground(new Color(255,255,255));
+//        jTable1.setRowHeight(25);
+    }
+
+    public TableKecamatanViewByBulanProduksi(String table) {
+        initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**

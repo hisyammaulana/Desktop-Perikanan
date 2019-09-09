@@ -6,6 +6,7 @@
 package View.Table;
 
 import Model.koneksi;
+import View.IsiData.IsiDataProduksiTambak;
 import View.PilihBulan;
 import java.awt.Color;
 import java.awt.Font;
@@ -23,11 +24,15 @@ import javax.swing.table.DefaultTableModel;
 public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
     public DefaultTableModel tblmodel;
     String header[] = {"DESA","KECAMATAN","BULAN",
-                        "PRODUKSI LELE", "PRODUKSI NILA",
-                        "PRODUKSI KAPER", "PRODUKSI NILEM",
-                        "PRODUKSI GURAME", "NILAI PRODUKSI LELE",
-                        "NILAI PRODUKSI NILA", "NILAI PRODUKSI KAPER",
-                        "NILAI PRODUKSI NILEM", "NILAI PRODUKSI GURAME"};
+                        "PRODUKSI RUMPUT LAUT", "NILAI PRODUKSI RUMPUT LAUT",
+                        "PRODUKSI UDANG WINDU", "NILAI PRODUKSI UDANG WINDU",
+                        "PRODUKSI UDANG VANAME SEDERHANA", "NILAI PRODUKSI UDANG VANAME SEDERHANA",
+                        "PRODUKSI UDANG VANAME SEMI", "NILAI PRODUKSI UDANG VANAME SEMI",
+                        "PRODUKSI UDANG VANAME INTENSIF", "NILAI PRODUKSI UDANG VANAME INTENSIF",
+                        "PRODUKSI UDANG PUTIH", "NILAI PRODUKSI UDANG PUTIH",
+                        "PRODUKSI UDANG LOKAL", "NILAI PRODUKSI UDANG LOKAL",
+                        "PRODUKSI BANDENG", "NILAI PRODUKSI BANDENG",
+                        "PRODUKSI LELE", "NILAI PRODUKSI LELE"};
     /**
      * Creates new form TableKecamatan
      */
@@ -78,6 +83,8 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
     public TableAllKecamatanViewByBulanTambak(String kolam, String kecamatan) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -353,7 +360,7 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-//        new IsiDataKolam().show();
+        new IsiDataProduksiTambak().show();
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

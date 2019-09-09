@@ -6,6 +6,7 @@
 package View.Table;
 
 import Model.koneksi;
+import View.IsiData.IsiDataLuasLahan;
 import View.PilihBulan;
 import java.awt.Color;
 import java.awt.Font;
@@ -22,12 +23,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
     public DefaultTableModel tblmodel;
-    String header[] = {"DESA","KECAMATAN","BULAN",
-                        "PRODUKSI LELE", "PRODUKSI NILA",
-                        "PRODUKSI KAPER", "PRODUKSI NILEM",
-                        "PRODUKSI GURAME", "NILAI PRODUKSI LELE",
-                        "NILAI PRODUKSI NILA", "NILAI PRODUKSI KAPER",
-                        "NILAI PRODUKSI NILEM", "NILAI PRODUKSI GURAME"};
+    String header[] = {"DESA","JUMLAH RTP TAMBAK SEDERHANA","LUAS LAHAN TAMBAK SEDERHANA",
+                        "JUMLAH RTP TAMBAK SEMI INTENSIF" ,"LUAS LAHAN TAMBAK TAMBAK SEMI INTENSIF",
+                        "JUMLAH RTP TAMBAK INTENSIF", "LUAS LAHAN TAMBAK INTENSIF", "JUMLAH RTP KOLAM", 
+                        "LUAS LAHAN KOLAM", "JUMLAH RTP RUMPUT LAUT", "LUAS LAHAN RUMPUT LAUT"};
     /**
      * Creates new form TableKecamatan
      */
@@ -50,7 +49,7 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
 //        tblmodel.fireTableDataChanged();
         try {
             Connection con = koneksi.getKoneksi();
-            String sql = "SELECT * FROM "+table+" WHERE bulan = '"+cb_bulan.getSelectedItem().toString()+"'";
+            String sql = "SELECT * FROM "+table+";";
             PreparedStatement statement = con.prepareStatement(sql);
 //            statement.setString(1, (String)cb_bulan.getSelectedItem());
             ResultSet res = statement.executeQuery(sql);
@@ -58,15 +57,16 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
             while (res.next()) {
                 Object[] ob= new Object[22];
                 ob[0] = res.getString(2);
-                ob[1] = res.getString(3);
-                ob[2] = res.getString(4);
-                ob[3] = res.getString(5);
-                ob[4] = res.getString(6);
-                ob[5] = res.getString(7);
-                ob[6] = res.getString(8);
-                ob[7] = res.getString(9);
-                ob[8] = res.getString(10);
-                ob[9] = res.getString(11);
+                ob[1] = res.getString(6);
+                ob[2] = res.getString(7);
+                ob[3] = res.getString(8);
+                ob[4] = res.getString(9);
+                ob[5] = res.getString(10);
+                ob[6] = res.getString(11);
+                ob[7] = res.getString(12);
+                ob[8] = res.getString(13);
+                ob[9] = res.getString(14);
+                ob[10] = res.getString(14);
                 tblmodel.addRow(ob);
             }
         } catch (Exception e) {
@@ -94,7 +94,7 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        cb_bulan = new javax.swing.JComboBox<>();
+        cb_kecamatan = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_luas_lahan = new javax.swing.JTable();
@@ -162,7 +162,12 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
                 .addGap(0, 28, Short.MAX_VALUE))
         );
 
-        cb_bulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH KECAMATAN ---", "BANJARHARJO", "BANTARKAWUNG", "BREBES", "BUMIAYU", "BULAKAMBA", "JATIBARANG", "KERSANA", "KETANGGUNGAN", "LARANGAN", "LOSARI", "PAGUYANGAN", "SALEM", "SIRAMPOG", "SONGGOM", "TANJUNG", "TONJONG", "WANASARI" }));
+        cb_kecamatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH KECAMATAN ---", "BANJARHARJO", "BANTARKAWUNG", "BREBES", "BUMIAYU", "BULAKAMBA", "JATIBARANG", "KERSANA", "KETANGGUNGAN", "LARANGAN", "LOSARI", "PAGUYANGAN", "SALEM", "SIRAMPOG", "SONGGOM", "TANJUNG", "TONJONG", "WANASARI" }));
+        cb_kecamatan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_kecamatanItemStateChanged(evt);
+            }
+        });
 
         tbl_luas_lahan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -304,7 +309,7 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_kecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -313,7 +318,7 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_kecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(63, 63, 63)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -353,9 +358,13 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-//        new IsiDataKolam().show();
+        new IsiDataLuasLahan().show();
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cb_kecamatanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_kecamatanItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_kecamatanItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -456,7 +465,7 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> cb_bulan;
+    public javax.swing.JComboBox<String> cb_kecamatan;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;

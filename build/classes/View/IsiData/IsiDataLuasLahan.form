@@ -139,7 +139,7 @@
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel24" pref="212" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txt_luas_tambak_tradisional" min="-2" pref="237" max="-2" attributes="0"/>
+                                              <Component id="txt_jml_rtp_tambak_sederhana" min="-2" pref="237" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -154,8 +154,8 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txt_luas_tambak_semi" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                                              <Component id="txt_luas_tambak_intensif" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                                              <Component id="txt_luas_tambak_sederhana" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                                              <Component id="txt_jml_rtp_tambak_semi" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
                                               <Component id="cb_bulan" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -178,10 +178,10 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                          <Component id="txt_rtp_tambak" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                                          <Component id="txt_rtp_kolam" alignment="1" min="-2" pref="237" max="-2" attributes="0"/>
+                                          <Component id="txt_luas_tambak_semi" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                                          <Component id="txt_jml_rtp_tambak_intensif" alignment="1" min="-2" pref="237" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="txt_luas_lahan" alignment="1" min="-2" pref="237" max="-2" attributes="0"/>
+                                      <Component id="txt_luas_tambak_intensif" alignment="1" min="-2" pref="237" max="-2" attributes="0"/>
                                       <Component id="cb_kecamatan" min="-2" pref="237" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -192,17 +192,25 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txt_rtp_rumput_laut" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                                      <Component id="txt_luas_lahan_rumput_laut" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                                      <Component id="txt_jml_rtp_kolam" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                                      <Component id="txt_luas_lahan_kolam" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace pref="131" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="123" max="32767" attributes="0"/>
+                          <Component id="jLabel31" min="-2" pref="212" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txt_jml_rtp_rumput_lat" min="-2" pref="237" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btn_simpan" min="-2" pref="110" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="501" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jLabel32" min="-2" pref="148" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txt_luas_lahan_rumput_laut" min="-2" pref="237" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -224,7 +232,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel21" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                                       <Component id="jLabel20" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="txt_rtp_tambak" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Component id="txt_luas_tambak_semi" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                                       <Component id="cb_penyuluh" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -232,23 +240,23 @@
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel24" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="txt_luas_tambak_tradisional" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txt_jml_rtp_tambak_sederhana" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="jLabel22" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="txt_rtp_kolam" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txt_jml_rtp_tambak_intensif" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel26" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="txt_luas_tambak_semi" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="txt_luas_lahan" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txt_luas_tambak_sederhana" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txt_luas_tambak_intensif" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="jLabel25" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel27" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="txt_luas_tambak_intensif" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txt_jml_rtp_tambak_semi" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="jLabel28" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="txt_rtp_rumput_laut" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txt_jml_rtp_kolam" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -262,13 +270,23 @@
                                           <Component id="jLabel29" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                                           <Component id="cb_bulan" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="txt_luas_lahan_rumput_laut" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Component id="txt_luas_lahan_kolam" min="-2" pref="50" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btn_simpan" min="-2" pref="41" max="-2" attributes="0"/>
-                          <EmptySpace pref="134" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel32" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="txt_luas_lahan_rumput_laut" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel31" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="txt_jml_rtp_rumput_lat" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="btn_simpan" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="125" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -293,68 +311,6 @@
                     <Property name="text" type="java.lang.String" value="Kecamatan"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_rtp_tambak">
-                  <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_rtp_tambakKeyTyped"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel20">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Jumlah RTP Tambak"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel21">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Nama Penyuluh"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txt_luas_tambak_tradisional">
-                  <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_luas_tambak_tradisionalKeyTyped"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel22">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Jumlah RTP Kolam"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel24">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Luas Tambak Tradisional"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txt_rtp_kolam">
-                  <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_rtp_kolamKeyTyped"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel25">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Luas Lahan Kolam Ha"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txt_luas_lahan">
-                  <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_luas_lahanKeyTyped"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel26">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Luas Tambak Semi Intensif"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JTextField" name="txt_luas_tambak_semi">
                   <Events>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_luas_tambak_semiKeyTyped"/>
@@ -362,6 +318,47 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel20">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Luas Lahan Tambak Semi Intensif"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel21">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nama Penyuluh"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txt_jml_rtp_tambak_sederhana">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_jml_rtp_tambak_sederhanaKeyTyped"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel22">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Jumlah RTP Tambak  Intensif "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel24">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Jumlah RTP Tambak Sederhana"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txt_jml_rtp_tambak_intensif">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_jml_rtp_tambak_intensifKeyTyped"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel25">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Luas Lahan Tambak  Intensif"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_luas_tambak_intensif">
                   <Events>
@@ -371,19 +368,40 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
+                <Component class="javax.swing.JLabel" name="jLabel26">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Luas Lahan Tambak Sederhana"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txt_luas_tambak_sederhana">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_luas_tambak_sederhanaKeyTyped"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txt_jml_rtp_tambak_semi">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_jml_rtp_tambak_semiKeyTyped"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel27">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Luas Tambak Intensif"/>
+                    <Property name="text" type="java.lang.String" value="Jumlah RTP Tambak  Semi Intensif "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel28">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Jumlah RTP Pumput Laut"/>
+                    <Property name="text" type="java.lang.String" value="Jumlah RTP  Kolam  "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_rtp_rumput_laut">
+                <Component class="javax.swing.JTextField" name="txt_jml_rtp_kolam">
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_rtp_rumput_lautKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_jml_rtp_kolamKeyTyped"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -404,12 +422,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel30">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Luas Lahan Rumput Laut Ha"/>
+                    <Property name="text" type="java.lang.String" value="Luas Lahan  Kolam Ha "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_luas_lahan_rumput_laut">
+                <Component class="javax.swing.JTextField" name="txt_luas_lahan_kolam">
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_luas_lahan_rumput_lautKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_luas_lahan_kolamKeyTyped"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -483,6 +501,32 @@
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel31">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Jumlah RTP  Rumput Laut"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txt_jml_rtp_rumput_lat">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_jml_rtp_rumput_latKeyTyped"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel32">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Luas Lahan  Rumput Laut"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txt_luas_lahan_rumput_laut">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_luas_lahan_rumput_lautKeyTyped"/>
+                  </Events>
+                  <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>

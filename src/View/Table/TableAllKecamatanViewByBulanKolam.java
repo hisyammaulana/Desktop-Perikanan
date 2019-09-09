@@ -6,13 +6,17 @@
 package View.Table;
 
 import Model.koneksi;
+import View.IsiData.IsiDataKolam;
 import View.PilihBulan;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -352,8 +356,12 @@ public class TableAllKecamatanViewByBulanKolam extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton14MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-//        new IsiDataKolam().show();
+        try {
+            // TODO add your handling code here:
+            new IsiDataKolam().show();
+        } catch (SQLException ex) {
+            Logger.getLogger(TableAllKecamatanViewByBulanKolam.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

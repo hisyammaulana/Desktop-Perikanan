@@ -72,28 +72,32 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         txt_desa = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        txt_rtp_tambak = new javax.swing.JTextField();
+        txt_luas_tambak_semi = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        txt_luas_tambak_tradisional = new javax.swing.JTextField();
+        txt_jml_rtp_tambak_sederhana = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        txt_rtp_kolam = new javax.swing.JTextField();
+        txt_jml_rtp_tambak_intensif = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        txt_luas_lahan = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        txt_luas_tambak_semi = new javax.swing.JTextField();
         txt_luas_tambak_intensif = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        txt_luas_tambak_sederhana = new javax.swing.JTextField();
+        txt_jml_rtp_tambak_semi = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        txt_rtp_rumput_laut = new javax.swing.JTextField();
+        txt_jml_rtp_kolam = new javax.swing.JTextField();
         cb_penyuluh = new javax.swing.JComboBox<>();
         jLabel30 = new javax.swing.JLabel();
-        txt_luas_lahan_rumput_laut = new javax.swing.JTextField();
+        txt_luas_lahan_kolam = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         cb_bulan = new javax.swing.JComboBox<>();
         btn_simpan = new javax.swing.JButton();
         cb_kecamatan = new javax.swing.JComboBox<>();
+        jLabel31 = new javax.swing.JLabel();
+        txt_jml_rtp_rumput_lat = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        txt_luas_lahan_rumput_laut = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -149,47 +153,33 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
 
         jLabel17.setText("Kecamatan");
 
-        txt_rtp_tambak.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_rtp_tambakKeyTyped(evt);
-            }
-        });
-
-        jLabel20.setText("Jumlah RTP Tambak");
-
-        jLabel21.setText("Nama Penyuluh");
-
-        txt_luas_tambak_tradisional.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_luas_tambak_tradisionalKeyTyped(evt);
-            }
-        });
-
-        jLabel22.setText("Jumlah RTP Kolam");
-
-        jLabel24.setText("Luas Tambak Tradisional");
-
-        txt_rtp_kolam.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_rtp_kolamKeyTyped(evt);
-            }
-        });
-
-        jLabel25.setText("Luas Lahan Kolam Ha");
-
-        txt_luas_lahan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_luas_lahanKeyTyped(evt);
-            }
-        });
-
-        jLabel26.setText("Luas Tambak Semi Intensif");
-
         txt_luas_tambak_semi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_luas_tambak_semiKeyTyped(evt);
             }
         });
+
+        jLabel20.setText("Luas Lahan Tambak Semi Intensif");
+
+        jLabel21.setText("Nama Penyuluh");
+
+        txt_jml_rtp_tambak_sederhana.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_jml_rtp_tambak_sederhanaKeyTyped(evt);
+            }
+        });
+
+        jLabel22.setText("Jumlah RTP Tambak  Intensif ");
+
+        jLabel24.setText("Jumlah RTP Tambak Sederhana");
+
+        txt_jml_rtp_tambak_intensif.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_jml_rtp_tambak_intensifKeyTyped(evt);
+            }
+        });
+
+        jLabel25.setText("Luas Lahan Tambak  Intensif");
 
         txt_luas_tambak_intensif.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -197,23 +187,37 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
             }
         });
 
-        jLabel27.setText("Luas Tambak Intensif");
+        jLabel26.setText("Luas Lahan Tambak Sederhana");
 
-        jLabel28.setText("Jumlah RTP Pumput Laut");
-
-        txt_rtp_rumput_laut.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_luas_tambak_sederhana.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_rtp_rumput_lautKeyTyped(evt);
+                txt_luas_tambak_sederhanaKeyTyped(evt);
+            }
+        });
+
+        txt_jml_rtp_tambak_semi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_jml_rtp_tambak_semiKeyTyped(evt);
+            }
+        });
+
+        jLabel27.setText("Jumlah RTP Tambak  Semi Intensif ");
+
+        jLabel28.setText("Jumlah RTP  Kolam  ");
+
+        txt_jml_rtp_kolam.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_jml_rtp_kolamKeyTyped(evt);
             }
         });
 
         cb_penyuluh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH PENYULUH ---" }));
 
-        jLabel30.setText("Luas Lahan Rumput Laut Ha");
+        jLabel30.setText("Luas Lahan  Kolam Ha ");
 
-        txt_luas_lahan_rumput_laut.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_luas_lahan_kolam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_luas_lahan_rumput_lautKeyTyped(evt);
+                txt_luas_lahan_kolamKeyTyped(evt);
             }
         });
 
@@ -229,6 +233,22 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
         });
 
         cb_kecamatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH KECAMATAN ---", "BANJARHARJO", "BANTARKAWUNG", "BREBES", "BUMIAYU", "BULAKAMBA", "JATIBARANG", "KERSANA", "KETANGGUNGAN", "LARANGAN", "LOSARI", "PAGUYANGAN", "SALEM", "SIRAMPOG", "SONGGOM", "TANJUNG", "TONJONG", "WANASARI" }));
+
+        jLabel31.setText("Jumlah RTP  Rumput Laut");
+
+        txt_jml_rtp_rumput_lat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_jml_rtp_rumput_latKeyTyped(evt);
+            }
+        });
+
+        jLabel32.setText("Luas Lahan  Rumput Laut");
+
+        txt_luas_lahan_rumput_laut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_luas_lahan_rumput_lautKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -247,7 +267,7 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
                                 .addGroup(jPanel6Layout.createSequentialGroup()
                                     .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txt_luas_tambak_tradisional, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txt_jml_rtp_tambak_sederhana, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -258,8 +278,8 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
                                     .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_luas_tambak_semi, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_luas_tambak_intensif, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_luas_tambak_sederhana, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_jml_rtp_tambak_semi, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(28, 28, 28))
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -275,9 +295,9 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_rtp_tambak, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_rtp_kolam, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_luas_lahan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_luas_tambak_semi, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_jml_rtp_tambak_intensif, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_luas_tambak_intensif, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_kecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -285,13 +305,21 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
                             .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_rtp_rumput_laut, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_luas_lahan_rumput_laut, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_jml_rtp_kolam, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_luas_lahan_kolam, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(131, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txt_jml_rtp_rumput_lat, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(501, 501, 501))
+                .addGap(20, 20, 20)
+                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_luas_lahan_rumput_laut, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,26 +337,26 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_rtp_tambak, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_luas_tambak_semi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_penyuluh, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_luas_tambak_tradisional, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_jml_rtp_tambak_sederhana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_rtp_kolam, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_jml_rtp_tambak_intensif, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_luas_tambak_semi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_luas_lahan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_luas_tambak_sederhana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_luas_tambak_intensif, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_luas_tambak_intensif, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_jml_rtp_tambak_semi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_rtp_rumput_laut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_jml_rtp_kolam, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -339,10 +367,17 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_luas_lahan_rumput_laut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_luas_lahan_kolam, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_luas_lahan_rumput_laut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_jml_rtp_rumput_lat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel6);
@@ -448,7 +483,7 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_simpanActionPerformed
 
-    private void txt_luas_tambak_tradisionalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_luas_tambak_tradisionalKeyTyped
+    private void txt_jml_rtp_tambak_sederhanaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_jml_rtp_tambak_sederhanaKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
         if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
@@ -456,7 +491,27 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
             getToolkit().beep();
             evt.consume();
         }
-    }//GEN-LAST:event_txt_luas_tambak_tradisionalKeyTyped
+    }//GEN-LAST:event_txt_jml_rtp_tambak_sederhanaKeyTyped
+
+    private void txt_luas_tambak_sederhanaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_luas_tambak_sederhanaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_luas_tambak_sederhanaKeyTyped
+
+    private void txt_jml_rtp_tambak_semiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_jml_rtp_tambak_semiKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_jml_rtp_tambak_semiKeyTyped
 
     private void txt_luas_tambak_semiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_luas_tambak_semiKeyTyped
         // TODO add your handling code here:
@@ -468,6 +523,16 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_luas_tambak_semiKeyTyped
 
+    private void txt_jml_rtp_tambak_intensifKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_jml_rtp_tambak_intensifKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_jml_rtp_tambak_intensifKeyTyped
+
     private void txt_luas_tambak_intensifKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_luas_tambak_intensifKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
@@ -478,7 +543,7 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_luas_tambak_intensifKeyTyped
 
-    private void txt_rtp_tambakKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rtp_tambakKeyTyped
+    private void txt_jml_rtp_kolamKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_jml_rtp_kolamKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
         if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
@@ -486,9 +551,9 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
             getToolkit().beep();
             evt.consume();
         }
-    }//GEN-LAST:event_txt_rtp_tambakKeyTyped
+    }//GEN-LAST:event_txt_jml_rtp_kolamKeyTyped
 
-    private void txt_rtp_kolamKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rtp_kolamKeyTyped
+    private void txt_luas_lahan_kolamKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_luas_lahan_kolamKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
         if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
@@ -496,37 +561,7 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
             getToolkit().beep();
             evt.consume();
         }
-    }//GEN-LAST:event_txt_rtp_kolamKeyTyped
-
-    private void txt_luas_lahanKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_luas_lahanKeyTyped
-        // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
-                || c==KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
-            evt.consume();
-        }
-    }//GEN-LAST:event_txt_luas_lahanKeyTyped
-
-    private void txt_rtp_rumput_lautKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rtp_rumput_lautKeyTyped
-        // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
-                || c==KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
-            evt.consume();
-        }
-    }//GEN-LAST:event_txt_rtp_rumput_lautKeyTyped
-
-    private void txt_luas_lahan_rumput_lautKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_luas_lahan_rumput_lautKeyTyped
-        // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
-                || c==KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
-            evt.consume();
-        }
-    }//GEN-LAST:event_txt_luas_lahan_rumput_lautKeyTyped
+    }//GEN-LAST:event_txt_luas_lahan_kolamKeyTyped
 
     private void txt_desaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_desaKeyTyped
         // TODO add your handling code here:
@@ -539,6 +574,14 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
         txt_desa.setText(txt_desa.getText().toUpperCase());
         txt_desa.setCaretPosition(pos);
     }//GEN-LAST:event_txt_desaKeyReleased
+
+    private void txt_jml_rtp_rumput_latKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_jml_rtp_rumput_latKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_jml_rtp_rumput_latKeyTyped
+
+    private void txt_luas_lahan_rumput_lautKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_luas_lahan_rumput_lautKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_luas_lahan_rumput_lautKeyTyped
 
     /**
      * @param args the command line arguments
@@ -597,6 +640,8 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
@@ -604,13 +649,15 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField txt_desa;
-    public javax.swing.JTextField txt_luas_lahan;
+    public javax.swing.JTextField txt_jml_rtp_kolam;
+    public javax.swing.JTextField txt_jml_rtp_rumput_lat;
+    public javax.swing.JTextField txt_jml_rtp_tambak_intensif;
+    public javax.swing.JTextField txt_jml_rtp_tambak_sederhana;
+    public javax.swing.JTextField txt_jml_rtp_tambak_semi;
+    public javax.swing.JTextField txt_luas_lahan_kolam;
     public javax.swing.JTextField txt_luas_lahan_rumput_laut;
     public javax.swing.JTextField txt_luas_tambak_intensif;
+    public javax.swing.JTextField txt_luas_tambak_sederhana;
     public javax.swing.JTextField txt_luas_tambak_semi;
-    public javax.swing.JTextField txt_luas_tambak_tradisional;
-    public javax.swing.JTextField txt_rtp_kolam;
-    public javax.swing.JTextField txt_rtp_rumput_laut;
-    public javax.swing.JTextField txt_rtp_tambak;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,14 +28,6 @@ public class PilihKecamatan extends javax.swing.JFrame {
 
    public PilihKecamatan(String kolam) {
         initComponents();
-        
-        labelJatibarang.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent event){
-                TableAllKecamatanViewByBulanKolam kolamByBulan = new TableAllKecamatanViewByBulanKolam(kolam, kecamatan);
-                kolamByBulan.setVisible(true);
-                dispose();
-            }
-        });
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 

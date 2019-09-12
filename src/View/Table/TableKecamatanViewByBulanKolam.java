@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -41,11 +42,6 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
 //        initComponents();
 //        setExtendedState(JFrame.MAXIMIZED_BOTH);
         
-//        jTable1.getTableHeader().setFont(new Font("Segoee UI", Font.BOLD, 12));
-//        jTable1.getTableHeader().setOpaque(false);
-//        jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
-//        jTable1.getTableHeader().setForeground(new Color(255,255,255));
-//        jTable1.setRowHeight(25);
     }
 
     public TableKecamatanViewByBulanKolam(String table) {
@@ -81,6 +77,17 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
         }
         
     }
+    
+//    public void selectByCombo(){
+//        Connection con = koneksi.getKoneksi();
+//        Statement s;
+//        ResultSet rs;
+//        try {
+//            s = con.createStatement();
+//            rs = s.executeQuery();
+//        } catch (Exception e) {
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.

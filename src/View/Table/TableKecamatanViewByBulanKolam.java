@@ -7,8 +7,8 @@ package View.Table;
 
 import Model.View.KolamView;
 import Model.koneksi;
+import View.Home;
 import View.IsiData.IsiDataKolam;
-import View.PilihBulan;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -366,7 +366,7 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
 
     private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
         // TODO add your handling code here:
-        new PilihBulan().show();
+        new Home().show();
         dispose();
     }//GEN-LAST:event_jButton14MouseClicked
 

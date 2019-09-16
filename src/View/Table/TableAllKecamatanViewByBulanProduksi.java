@@ -6,7 +6,7 @@
 package View.Table;
 
 import Model.ProduksiModel;
-import View.PilihBulan;
+import View.Home;
 import java.awt.Color;
 import java.awt.Component;
 import java.sql.SQLException; 
@@ -326,7 +326,7 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
 
     private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
         // TODO add your handling code here:
-        new PilihBulan().show();
+        new Home().show();
         dispose();
     }//GEN-LAST:event_jButton14MouseClicked
 

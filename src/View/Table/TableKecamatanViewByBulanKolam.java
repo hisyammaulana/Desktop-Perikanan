@@ -5,6 +5,7 @@
  */
 package View.Table;
 
+import Model.View.KolamView;
 import Model.koneksi;
 import View.IsiData.IsiDataKolam;
 import View.PilihBulan;
@@ -17,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -47,47 +49,47 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
     public TableKecamatanViewByBulanKolam(String table) {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        test.setText(table);
         tblmodel = new DefaultTableModel(null,header);
         tbl_kolam.setModel(tblmodel);
-
-        try {
-            Connection con = koneksi.getKoneksi();
-            String sql = "SELECT * FROM "+table+" WHERE bulan = '"+(String) cb_bulan.getSelectedItem()+"' && kecamatan = '"+(String) cbKecamatan.getSelectedItem()+"'";
-            PreparedStatement statement = con.prepareStatement(sql);
-//            statement.setString(1, (String)cb_bulan.getSelectedItem());
-            ResultSet res = statement.executeQuery(sql);
-            
-            while (res.next()) {
-                Object[] ob= new Object[22];
-                ob[0] = res.getString(2);
-                ob[1] = res.getString(3);
-                ob[2] = res.getString(4);
-                ob[3] = res.getString(5);
-                ob[4] = res.getString(6);
-                ob[5] = res.getString(7);
-                ob[6] = res.getString(8);
-                ob[7] = res.getString(9);
-                ob[8] = res.getString(10);
-                ob[9] = res.getString(11);
-                tblmodel.addRow(ob);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
         
     }
     
-//    public void selectByCombo(){
-//        Connection con = koneksi.getKoneksi();
-//        Statement s;
-//        ResultSet rs;
-//        try {
-//            s = con.createStatement();
-//            rs = s.executeQuery();
-//        } catch (Exception e) {
-//        }
-//    }
+    public ArrayList<KolamView> getData(String kecamatan){
+        ArrayList<KolamView> list = new ArrayList<KolamView>();
+        Connection con = koneksi.getKoneksi();
+        Statement st;
+        ResultSet rs;
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM tbl_kolam WHERE bulan = '"+cb_bulan.getSelectedItem().toString()+"' AND "
+                    + "kecamatan = '"+cbKecamatan.getSelectedItem().toString()+"'");
+            
+            KolamView kv;
+            while(rs.next()){
+                kv = new KolamView(
+                        rs.getString("ID"),
+                        rs.getString("DESA"),
+                        rs.getString("KECAMATAN"),
+                        rs.getString("BULAN"),
+                        rs.getString("PENYULUH"),
+                        rs.getInt("PRO_LELE"),
+                        rs.getInt("NIL_LELE"),
+                        rs.getInt("PRO_NILA"),
+                        rs.getInt("NIL_NILA"),
+                        rs.getInt("PRO_KAPER"),
+                        rs.getInt("NIL_KAPER"),
+                        rs.getInt("PRO_NILEM"),
+                        rs.getInt("NIL_NILEM"),
+                        rs.getInt("PRO_GURAME"),
+                        rs.getInt("NIL_GURAME")
+                );
+                list.add(kv);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(KolamView.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return list;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -380,6 +382,29 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
 
     private void btnLihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatActionPerformed
         // TODO add your handling code here:
+        ArrayList<KolamView> list = getData(cb_bulan.getSelectedItem().toString() + cbKecamatan.getSelectedItem().toString());
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(header);
+        Object[] row = new Object[15];
+        for(int i = 0; i < list.size(); i++){
+            row[0] = list.get(i).getId();
+            row[1] = list.get(i).getDesa();
+            row[2] = list.get(i).getKecamatan();
+            row[3] = list.get(i).getBulan();
+            row[4] = list.get(i).getPenyuluh();
+            row[5] = list.get(i).getPro_lele();
+            row[6] = list.get(i).getNil_lele();
+            row[7] = list.get(i).getPro_nila();
+            row[8] = list.get(i).getNil_nila();
+            row[9] = list.get(i).getPro_kaper();
+            row[10] = list.get(i).getNil_kaper();
+            row[11] = list.get(i).getPro_nilem();
+            row[12] = list.get(i).getNil_nilem();
+            row[13] = list.get(i).getPro_gurame();
+            row[14] = list.get(i).getNil_gurame();
+            model.addRow(row);
+        }
+        tbl_kolam.setModel(model);
     }//GEN-LAST:event_btnLihatActionPerformed
 
     /**

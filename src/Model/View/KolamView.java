@@ -28,27 +28,6 @@ public class KolamView {
     
     public KolamView(){}
 
-//    public KolamView(String id, String desa, String kecamatan, String bulan, String penyuluh, 
-//            int pro_lele, int nil_lele, int pro_nila, int nil_nila, int pro_kaper, int nil_kaper, 
-//            int pro_nilem, int nil_nilem, int pro_gurame, int nil_gurame) {
-//        
-//        this.id = id;
-//        this.desa = desa;
-//        this.kecamatan = kecamatan;
-//        this.bulan = bulan;
-//        this.penyuluh = penyuluh;
-//        this.pro_lele = pro_lele;
-//        this.nil_lele = nil_lele;
-//        this.pro_nila = pro_nila;
-//        this.nil_nila = nil_nila;
-//        this.pro_kaper = pro_kaper;
-//        this.nil_kaper = nil_kaper;
-//        this.pro_nilem = pro_nilem;
-//        this.nil_nilem = nil_nilem;
-//        this.pro_gurame = pro_gurame;
-//        this.nil_gurame = nil_gurame;
-//    }
-
     public KolamView(String id, String desa, String kecamatan, String bulan, String penyuluh, int pro_lele, int nil_lele, int pro_nila, int nil_nila, int pro_kaper, int nil_kaper, int pro_nilem, int nil_nilem, int pro_gurame, int nil_gurame) {
         this.id = id;
         this.desa = desa;

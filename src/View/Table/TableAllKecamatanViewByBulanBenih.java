@@ -5,6 +5,7 @@
  */
 package View.Table;
 
+import Model.View.BenihView;
 import Model.koneksi;
 import View.Home;
 import java.awt.Color;
@@ -12,7 +13,11 @@ import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,62 +27,62 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
     public DefaultTableModel tblmodel;
-    String header[] = {"DESA","KECAMATAN","BULAN",
-                        "PRODUKSI LELE", "PRODUKSI NILA",
-                        "PRODUKSI KAPER", "PRODUKSI NILEM",
-                        "PRODUKSI GURAME", "NILAI PRODUKSI LELE",
-                        "NILAI PRODUKSI NILA", "NILAI PRODUKSI KAPER",
-                        "NILAI PRODUKSI NILEM", "NILAI PRODUKSI GURAME"};
+    String header[] = {"ID", "NAMA UPR/RTP","DESA","KECAMATAN",
+                        "BULAN", "PENYULUH","LUAS LAHAN",
+                        "PRODUKSI UDANG WINDU", "PRODUKSI UDANG VANNAME",
+                        "PRODUKSI NILA", "PRODUKSI BANDENG", "PRODUKSI LELE",
+                        "NILAI UDANG WINDU", "NILAI UDANG VANNAME",
+                        "NILAI NILA", "NILAI BANDENG", "NILAI LELE"};
     /**
      * Creates new form TableKecamatan
      */
-//    public TableAllKecamatanViewByBulanKolam() {
-//        initComponents();
-//        setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        
-//        tbl_kolam.getTableHeader().setFont(new Font("Segoee UI", Font.BOLD, 12));
-//        tbl_kolam.getTableHeader().setOpaque(false);
-//        tbl_kolam.getTableHeader().setBackground(new Color(32, 136, 203));
-//        tbl_kolam.getTableHeader().setForeground(new Color(255,255,255));
-//        tbl_kolam.setRowHeight(25);
-//    }
 
     public TableAllKecamatanViewByBulanBenih(String table) {
         initComponents();
         tblmodel = new DefaultTableModel(null,header);
-        tbl_kolam.setModel(tblmodel);
-//        tblmodel.getDataVector().removeAllElements();
-//        tblmodel.fireTableDataChanged();
-        try {
-            Connection con = koneksi.getKoneksi();
-            String sql = "SELECT * FROM "+table+" WHERE bulan = '"+cb_bulan.getSelectedItem().toString()+"'";
-            PreparedStatement statement = con.prepareStatement(sql);
-//            statement.setString(1, (String)cb_bulan.getSelectedItem());
-            ResultSet res = statement.executeQuery(sql);
-            
-            while (res.next()) {
-                Object[] ob= new Object[22];
-                ob[0] = res.getString(2);
-                ob[1] = res.getString(3);
-                ob[2] = res.getString(4);
-                ob[3] = res.getString(5);
-                ob[4] = res.getString(6);
-                ob[5] = res.getString(7);
-                ob[6] = res.getString(8);
-                ob[7] = res.getString(9);
-                ob[8] = res.getString(10);
-                ob[9] = res.getString(11);
-                tblmodel.addRow(ob);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        tbl_benih.setModel(tblmodel);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-
-    public TableAllKecamatanViewByBulanBenih(String kolam, String kecamatan) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public ArrayList<BenihView> getData(String kecamatan){
+        ArrayList<BenihView> list = new ArrayList<BenihView>();
+        Connection con = koneksi.getKoneksi();
+        Statement st;
+        ResultSet rs;
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM tbl_produksi_benih WHERE "
+                    + "bulan = '"+cb_bulan.getSelectedItem().toString()+"'");
+            BenihView bv;
+            while(rs.next()){
+                bv = new BenihView(
+                        rs.getInt("ID"),
+                        rs.getString("NAMA"),
+                        rs.getString("DESA"),
+                        rs.getString("KECAMATAN"),
+                        rs.getString("BULAN"),
+                        rs.getString("PENYULUH"),
+                        rs.getInt("LUAS_LAHAN"),
+                        rs.getInt("PRO_UDANG_WINDU"),
+                        rs.getInt("NIL_UDANG_WINDU"),
+                        rs.getInt("PRO_UDANG_VANAME"),
+                        rs.getInt("NIL_UDANG_VANAME"),
+                        rs.getInt("PRO_NILA"),
+                        rs.getInt("NIL_NILA"),
+                        rs.getInt("PRO_BANDENG"),
+                        rs.getInt("NIL_BANDENG"),
+                        rs.getInt("PRO_LELE"),
+                        rs.getInt("NIL_LELE")
+                );
+                list.add(bv);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(BenihView.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return list;
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,7 +102,7 @@ public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
         cb_bulan = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_kolam = new javax.swing.JTable();
+        tbl_benih = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -163,8 +168,13 @@ public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
         );
 
         cb_bulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER" }));
+        cb_bulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_bulanActionPerformed(evt);
+            }
+        });
 
-        tbl_kolam.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_benih.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -175,13 +185,13 @@ public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbl_kolam.setFocusable(false);
-        tbl_kolam.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tbl_kolam.setRowHeight(25);
-        tbl_kolam.setSelectionBackground(new java.awt.Color(132, 205, 238));
-        tbl_kolam.setShowVerticalLines(false);
-        tbl_kolam.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tbl_kolam);
+        tbl_benih.setFocusable(false);
+        tbl_benih.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tbl_benih.setRowHeight(25);
+        tbl_benih.setSelectionBackground(new java.awt.Color(132, 205, 238));
+        tbl_benih.setShowVerticalLines(false);
+        tbl_benih.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tbl_benih);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/garbage.png"))); // NOI18N
         jButton4.setText("Hapus");
@@ -357,6 +367,35 @@ public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void cb_bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_bulanActionPerformed
+        // TODO add your handling code here:
+        ArrayList<BenihView> list = getData(cb_bulan.getSelectedItem().toString());
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(header);
+        Object[] row = new Object[17];
+        for(int i = 0; i < list.size(); i++){
+            row[0] = list.get(i).getId();            
+            row[1] = list.get(i).getNama();            
+            row[2] = list.get(i).getDesa();            
+            row[3] = list.get(i).getKecamatan();            
+            row[4] = list.get(i).getPenyuluh();            
+            row[5] = list.get(i).getBulan();            
+            row[6] = list.get(i).getLuas_lahan();            
+            row[7] = list.get(i).getPro_udang_windu();            
+            row[8] = list.get(i).getNil_udang_windu();            
+            row[9] = list.get(i).getPro_udang_vaname();            
+            row[10] = list.get(i).getNil_udang_vaname();            
+            row[11] = list.get(i).getPro_nila();            
+            row[12] = list.get(i).getNil_nila();            
+            row[13] = list.get(i).getPro_bandeng();            
+            row[14] = list.get(i).getNil_bandeng();            
+            row[15] = list.get(i).getPro_lele();            
+            row[16] = list.get(i).getNil_lele();
+            model.addRow(row);
+        }
+        tbl_benih.setModel(model);
+    }//GEN-LAST:event_cb_bulanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,6 +481,6 @@ public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tbl_kolam;
+    public javax.swing.JTable tbl_benih;
     // End of variables declaration//GEN-END:variables
 }

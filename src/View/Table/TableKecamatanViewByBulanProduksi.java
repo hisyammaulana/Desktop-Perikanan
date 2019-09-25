@@ -5,16 +5,29 @@
  */
 package View.Table;
 
+import Model.View.ProduksiPengolahanView;
+import Model.koneksi;
 import View.Home;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author tantowi
  */
 public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
+    public DefaultTableModel tblmodel;
+    String header[] ={"NAMA", "KECAMATAN", "PENYULUH", "BULAN", "ALAMAT", "JENIS OLAHAN",
+     "PRODUK OLAHAN", "PRODUKSI", "NILAI PRODUKSI", "KETERANGAN"};
 
     /**
      * Creates new form TableKecamatan
@@ -22,17 +35,45 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
     public TableKecamatanViewByBulanProduksi() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        
-//        jTable1.getTableHeader().setFont(new Font("Segoee UI", Font.BOLD, 12));
-//        jTable1.getTableHeader().setOpaque(false);
-//        jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
-//        jTable1.getTableHeader().setForeground(new Color(255,255,255));
-//        jTable1.setRowHeight(25);
     }
 
     public TableKecamatanViewByBulanProduksi(String table) {
         initComponents();
+        tblmodel = new DefaultTableModel(null, header);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        tbl_produksi.setModel(tblmodel);
+    }
+    
+    public ArrayList<ProduksiPengolahanView> getData(String kecamatan){
+        ArrayList<ProduksiPengolahanView> list = new ArrayList<ProduksiPengolahanView>();
+        Connection con = koneksi.getKoneksi();
+        Statement st;
+        ResultSet rs;
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM tbl_produksi_pengolahan WHERE bulan = '"+cb_bulan.getSelectedItem().toString()+"' AND "
+                    + "kecamatan = '"+cb_kecamatan.getSelectedItem().toString()+"'");
+            
+            ProduksiPengolahanView ppv;
+            while(rs.next()){
+                ppv = new ProduksiPengolahanView(
+                        rs.getString("NAMA"),
+                        rs.getString("KECAMATAN"),
+                        rs.getString("PENYULUH"),
+                        rs.getString("BULAN"),
+                        rs.getString("ALAMAT"),
+                        rs.getString("JENIS_OLAHAN"),
+                        rs.getString("PRODUK_OLAHAN"),
+                        rs.getInt("PRODUKSI"),
+                        rs.getInt("NIL_PRODUKSI"),
+                        rs.getString("KETERANGAN")
+                );
+                list.add(ppv);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ProduksiPengolahanView.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return list;
     }
 
     /**
@@ -52,7 +93,7 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_produksi = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -62,7 +103,8 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
         cb_bulan = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cbKecamatan = new javax.swing.JComboBox<>();
+        cb_kecamatan = new javax.swing.JComboBox<>();
+        btnLihat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,7 +160,7 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
                 .addGap(0, 28, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_produksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -129,13 +171,13 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setFocusable(false);
-        jTable1.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        jTable1.setRowHeight(25);
-        jTable1.setSelectionBackground(new java.awt.Color(132, 205, 238));
-        jTable1.setShowVerticalLines(false);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        tbl_produksi.setFocusable(false);
+        tbl_produksi.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tbl_produksi.setRowHeight(25);
+        tbl_produksi.setSelectionBackground(new java.awt.Color(132, 205, 238));
+        tbl_produksi.setShowVerticalLines(false);
+        tbl_produksi.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tbl_produksi);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/garbage.png"))); // NOI18N
         jButton4.setText("Hapus");
@@ -216,7 +258,14 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
 
         jLabel3.setText("Bulan");
 
-        cbKecamatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH KECAMATAN ---", "BANJARHARJO", "BANTARKAWUNG", "BREBES", "BUMIAYU", "BULAKAMBA", "JATIBARANG", "KERSANA", "KETANGGUNGAN", "LARANGAN", "LOSARI", "PAGUYANGAN", "SALEM", "SIRAMPOG", "SONGGOM", "TANJUNG", "TONJONG", "WANASARI" }));
+        cb_kecamatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH KECAMATAN ---", "BANJARHARJO", "BANTARKAWUNG", "BREBES", "BUMIAYU", "BULAKAMBA", "JATIBARANG", "KERSANA", "KETANGGUNGAN", "LARANGAN", "LOSARI", "PAGUYANGAN", "SALEM", "SIRAMPOG", "SONGGOM", "TANJUNG", "TONJONG", "WANASARI" }));
+
+        btnLihat.setText("Lihat");
+        btnLihat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLihatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -227,27 +276,29 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
                 .addComponent(jButton14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(cbKecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_kecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
+                .addGap(18, 18, 18)
+                .addComponent(btnLihat)
+                .addGap(85, 85, 85))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(cbKecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cb_kecamatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(cb_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLihat))
                     .addComponent(jButton14))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -303,6 +354,28 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void btnLihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatActionPerformed
+        // TODO add your handling code here:
+        ArrayList<ProduksiPengolahanView> list = getData(cb_bulan.getSelectedItem().toString() + cb_kecamatan.getSelectedItem().toString());
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(header);
+        Object[] row = new Object[10];
+        for(int i = 0; i < list.size(); i++){
+            row[0] = list.get(i).getNama();
+            row[1] = list.get(i).getKecamatan();
+            row[2] = list.get(i).getPenyuluh();
+            row[3] = list.get(i).getBulan();
+            row[4] = list.get(i).getAlamat();
+            row[5] = list.get(i).getJenis_olahan();
+            row[6] = list.get(i).getProduk_olahan();
+            row[7] = list.get(i).getProduksi();
+            row[8] = list.get(i).getNil_produksi();
+            row[9] = list.get(i).getKeterangan();
+            model.addRow(row);
+        }
+        tbl_produksi.setModel(model);        
+    }//GEN-LAST:event_btnLihatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -342,8 +415,9 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbKecamatan;
+    private javax.swing.JButton btnLihat;
     private javax.swing.JComboBox<String> cb_bulan;
+    private javax.swing.JComboBox<String> cb_kecamatan;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -360,6 +434,6 @@ public class TableKecamatanViewByBulanProduksi extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbl_produksi;
     // End of variables declaration//GEN-END:variables
 }

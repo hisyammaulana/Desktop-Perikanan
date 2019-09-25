@@ -51,7 +51,6 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         tblmodel = new DefaultTableModel(null,header);
         tbl_kolam.setModel(tblmodel);
-        
     }
     
     public ArrayList<KolamView> getData(String kecamatan){
@@ -67,7 +66,6 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
             KolamView kv;
             while(rs.next()){
                 kv = new KolamView(
-                        rs.getString("ID"),
                         rs.getString("DESA"),
                         rs.getString("KECAMATAN"),
                         rs.getString("BULAN"),
@@ -385,23 +383,22 @@ public class TableKecamatanViewByBulanKolam extends javax.swing.JFrame {
         ArrayList<KolamView> list = getData(cb_bulan.getSelectedItem().toString() + cbKecamatan.getSelectedItem().toString());
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(header);
-        Object[] row = new Object[15];
+        Object[] row = new Object[14];
         for(int i = 0; i < list.size(); i++){
-            row[0] = list.get(i).getId();
-            row[1] = list.get(i).getDesa();
-            row[2] = list.get(i).getKecamatan();
-            row[3] = list.get(i).getBulan();
-            row[4] = list.get(i).getPenyuluh();
-            row[5] = list.get(i).getPro_lele();
-            row[6] = list.get(i).getNil_lele();
-            row[7] = list.get(i).getPro_nila();
-            row[8] = list.get(i).getNil_nila();
-            row[9] = list.get(i).getPro_kaper();
-            row[10] = list.get(i).getNil_kaper();
-            row[11] = list.get(i).getPro_nilem();
-            row[12] = list.get(i).getNil_nilem();
-            row[13] = list.get(i).getPro_gurame();
-            row[14] = list.get(i).getNil_gurame();
+            row[0] = list.get(i).getDesa();
+            row[1] = list.get(i).getKecamatan();
+            row[2] = list.get(i).getBulan();
+            row[3] = list.get(i).getPenyuluh();
+            row[4] = list.get(i).getPro_lele();
+            row[5] = list.get(i).getNil_lele();
+            row[6] = list.get(i).getPro_nila();
+            row[7] = list.get(i).getNil_nila();
+            row[8] = list.get(i).getPro_kaper();
+            row[9] = list.get(i).getNil_kaper();
+            row[10] = list.get(i).getPro_nilem();
+            row[11] = list.get(i).getNil_nilem();
+            row[12] = list.get(i).getPro_gurame();
+            row[13] = list.get(i).getNil_gurame();
             model.addRow(row);
         }
         tbl_kolam.setModel(model);

@@ -32,8 +32,7 @@ public class BenihView {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
 
-    public BenihView(int id, String nama, String desa, String kecamatan, String penyuluh, String bulan, int luas_lahan, int pro_udang_windu, int nil_udang_windu, int pro_udang_vaname, int nil_udang_vaname, int pro_nila, int nil_nila, int pro_bandeng, int nil_bandeng, int pro_lele, int nil_lele) {
-        this.id = id;
+    public BenihView(String nama, String desa, String kecamatan, String penyuluh, String bulan, int luas_lahan, int pro_udang_windu, int nil_udang_windu, int pro_udang_vaname, int nil_udang_vaname, int pro_nila, int nil_nila, int pro_bandeng, int nil_bandeng, int pro_lele, int nil_lele) {
         this.nama = nama;
         this.desa = desa;
         this.kecamatan = kecamatan;
@@ -52,13 +51,6 @@ public class BenihView {
         this.nil_lele = nil_lele;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNama() {
         return nama;

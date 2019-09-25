@@ -5,6 +5,7 @@
  */
 package View.Table;
 
+import Model.View.TambakView;
 import Model.koneksi;
 import View.Home;
 import View.IsiData.IsiDataProduksiTambak;
@@ -13,7 +14,11 @@ import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
     public DefaultTableModel tblmodel;
-    String header[] = {"DESA","KECAMATAN","BULAN",
+    String header[] = {"DESA","KECAMATAN","PENYULUH", "BULAN",
                         "PRODUKSI RUMPUT LAUT", "NILAI PRODUKSI RUMPUT LAUT",
                         "PRODUKSI UDANG WINDU", "NILAI PRODUKSI UDANG WINDU",
                         "PRODUKSI UDANG VANAME SEDERHANA", "NILAI PRODUKSI UDANG VANAME SEDERHANA",
@@ -50,38 +55,51 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
     public TableAllKecamatanViewByBulanTambak(String table) {
         initComponents();
         tblmodel = new DefaultTableModel(null,header);
-        tbl_kolam.setModel(tblmodel);
-//        tblmodel.getDataVector().removeAllElements();
-//        tblmodel.fireTableDataChanged();
-        try {
-            Connection con = koneksi.getKoneksi();
-            String sql = "SELECT * FROM "+table+" WHERE bulan = '"+cb_bulan.getSelectedItem().toString()+"'";
-            PreparedStatement statement = con.prepareStatement(sql);
-//            statement.setString(1, (String)cb_bulan.getSelectedItem());
-            ResultSet res = statement.executeQuery(sql);
-            
-            while (res.next()) {
-                Object[] ob= new Object[22];
-                ob[0] = res.getString(2);
-                ob[1] = res.getString(3);
-                ob[2] = res.getString(4);
-                ob[3] = res.getString(5);
-                ob[4] = res.getString(6);
-                ob[5] = res.getString(7);
-                ob[6] = res.getString(8);
-                ob[7] = res.getString(9);
-                ob[8] = res.getString(10);
-                ob[9] = res.getString(11);
-                tblmodel.addRow(ob);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        tbl_tambak.setAutoResizeMode(tbl_tambak.AUTO_RESIZE_OFF);
+        tbl_tambak.setModel(tblmodel);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
-    public TableAllKecamatanViewByBulanTambak(String kolam, String kecamatan) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<TambakView> getData(String kecamatan){
+        ArrayList<TambakView> list = new ArrayList<TambakView>();
+        Connection con = koneksi.getKoneksi();
+        Statement st;
+        ResultSet rs;
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM tbl_produksi_tambak WHERE bulan = '"+cb_bulan.getSelectedItem().toString()+"'");
+            TambakView tv;
+            while(rs.next()){
+                tv = new TambakView(
+                     rs.getString("DESA"),
+                     rs.getString("KECAMATAN"),
+                     rs.getString("PENYULUH"),
+                     rs.getString("BULAN"),
+                     rs.getInt("PRO_RUMPUT_LAUT"),
+                     rs.getInt("NIL_RUMPUT_LAUT"),
+                     rs.getInt("PRO_UDANG_WINDU"),
+                     rs.getInt("NIL_UDANG_WINDU"),
+                     rs.getInt("PRO_UDANG_VANAME_SEDERHANA"),
+                     rs.getInt("NIL_UDANG_VANAME_SEDERHANA"),
+                     rs.getInt("PRO_UDANG_VANAME_SEMI"),
+                     rs.getInt("NIL_UDANG_VANAME_SEMI"),
+                     rs.getInt("PRO_UDANG_VANAME_INTENSIF"),
+                     rs.getInt("NIL_UDANG_VANAME_INTENSIF"),
+                     rs.getInt("PRO_UDANG_PUTIH"),
+                     rs.getInt("NIL_UDANG_PUTIH"),
+                     rs.getInt("PRO_UDANG_LOKAL"),
+                     rs.getInt("NIL_UDANG_LOKAL"),
+                     rs.getInt("PRO_BANDENG"),
+                     rs.getInt("NIL_BANDENG"),
+                     rs.getInt("PRO_LELE"),
+                     rs.getInt("NIL_LELE")
+                );
+                list.add(tv);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(TambakView.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return list;
     }
 
  
@@ -103,14 +121,15 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         cb_bulan = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_kolam = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        scrollPane1 = new java.awt.ScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_tambak = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -142,7 +161,7 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(215, 215, 215)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(367, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,25 +189,11 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
         );
 
         cb_bulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER" }));
-
-        tbl_kolam.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        cb_bulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_bulanActionPerformed(evt);
             }
-        ));
-        tbl_kolam.setFocusable(false);
-        tbl_kolam.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tbl_kolam.setRowHeight(25);
-        tbl_kolam.setSelectionBackground(new java.awt.Color(132, 205, 238));
-        tbl_kolam.setShowVerticalLines(false);
-        tbl_kolam.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tbl_kolam);
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/garbage.png"))); // NOI18N
         jButton4.setText("Hapus");
@@ -252,13 +257,28 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(172, 172, 172)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(221, Short.MAX_VALUE)))
         );
+
+        tbl_tambak.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tbl_tambak);
+
+        scrollPane1.add(jScrollPane2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -267,16 +287,14 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1028, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jButton14.setText("<- Kembali");
@@ -367,6 +385,64 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void cb_bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_bulanActionPerformed
+        // TODO add your handling code here:
+        ArrayList<TambakView> list = getData(cb_bulan.getSelectedItem().toString());
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(header);
+        Object[] row = new Object[22];
+        for(int i = 0; i < list.size(); i++){
+            row[0] = list.get(i).getDesa();
+            row[1] = list.get(i).getKecamatan();
+            row[2] = list.get(i).getPenyuluh();
+            row[3] = list.get(i).getBulan();
+            row[4] = list.get(i).getPro_rumput_laut();
+            row[5] = list.get(i).getNil_rumput_laut();
+            row[6] = list.get(i).getPro_udang_windu();
+            row[7] = list.get(i).getNil_udang_windu();
+            row[8] = list.get(i).getPro_udang_vaname_sederhana();
+            row[9] = list.get(i).getNil_udang_vaname_sederhana();
+            row[10] = list.get(i).getPro_udang_vaname_semi();
+            row[11] = list.get(i).getNil_udang_vaname_semi();
+            row[12] = list.get(i).getPro_udang_vaname_intensif();
+            row[13] = list.get(i).getNil_udang_vaname_intensif();
+            row[14] = list.get(i).getPro_udang_putih();
+            row[15] = list.get(i).getNil_udang_putih();
+            row[16] = list.get(i).getPro_udang_lokal();
+            row[17] = list.get(i).getNil_udang_lokal();
+            row[18] = list.get(i).getPro_bandeng();
+            row[19] = list.get(i).getNil_bandeng();
+            row[20] = list.get(i).getPro_lele();
+            row[21] = list.get(i).getNil_lele();
+            model.addRow(row);
+
+//            row[2] = list.get(i).getDesa();
+//            row[3] = list.get(i).getKecamatan();
+//            row[4] = list.get(i).getPenyuluh();
+//            row[5] = list.get(i).getBulan();
+//            row[6] = list.get(i).getPro_rumput_laut();
+//            row[7] = list.get(i).getNil_rumput_laut();
+//            row[8] = list.get(i).getPro_udang_windu();
+//            row[9] = list.get(i).getNil_udang_windu();
+//            row[10] = list.get(i).getPro_udang_vaname_sederhana();
+//            row[11] = list.get(i).getNil_udang_vaname_sederhana();
+//            row[12] = list.get(i).getPro_udang_vaname_semi();
+//            row[13] = list.get(i).getNil_udang_vaname_semi();
+//            row[14] = list.get(i).getPro_udang_vaname_intensif();
+//            row[15] = list.get(i).getNil_udang_vaname_intensif();
+//            row[16] = list.get(i).getPro_udang_putih();
+//            row[17] = list.get(i).getNil_udang_putih();
+//            row[18] = list.get(i).getPro_udang_lokal();
+//            row[19] = list.get(i).getNil_udang_lokal();
+//            row[20] = list.get(i).getPro_bandeng();
+//            row[21] = list.get(i).getNil_bandeng();
+//            row[22] = list.get(i).getPro_lele();
+//            row[23] = list.get(i).getNil_lele();
+//            model.addRow(row);
+        }
+        tbl_tambak.setModel(model);
+    }//GEN-LAST:event_cb_bulanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -451,7 +527,8 @@ public class TableAllKecamatanViewByBulanTambak extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3head;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tbl_kolam;
+    private javax.swing.JScrollPane jScrollPane2;
+    private java.awt.ScrollPane scrollPane1;
+    private javax.swing.JTable tbl_tambak;
     // End of variables declaration//GEN-END:variables
 }

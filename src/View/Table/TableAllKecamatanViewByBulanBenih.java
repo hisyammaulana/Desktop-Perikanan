@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
     public DefaultTableModel tblmodel;
-    String header[] = {"ID", "NAMA UPR/RTP","DESA","KECAMATAN",
+    String header[] = {"NAMA UPR/RTP","DESA","KECAMATAN",
                         "BULAN", "PENYULUH","LUAS LAHAN",
                         "PRODUKSI UDANG WINDU", "PRODUKSI UDANG VANNAME",
                         "PRODUKSI NILA", "PRODUKSI BANDENG", "PRODUKSI LELE",
@@ -56,7 +56,6 @@ public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
             BenihView bv;
             while(rs.next()){
                 bv = new BenihView(
-                        rs.getInt("ID"),
                         rs.getString("NAMA"),
                         rs.getString("DESA"),
                         rs.getString("KECAMATAN"),
@@ -372,25 +371,24 @@ public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
         ArrayList<BenihView> list = getData(cb_bulan.getSelectedItem().toString());
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(header);
-        Object[] row = new Object[17];
-        for(int i = 0; i < list.size(); i++){
-            row[0] = list.get(i).getId();            
-            row[1] = list.get(i).getNama();            
-            row[2] = list.get(i).getDesa();            
-            row[3] = list.get(i).getKecamatan();            
-            row[4] = list.get(i).getPenyuluh();            
-            row[5] = list.get(i).getBulan();            
-            row[6] = list.get(i).getLuas_lahan();            
-            row[7] = list.get(i).getPro_udang_windu();            
-            row[8] = list.get(i).getNil_udang_windu();            
-            row[9] = list.get(i).getPro_udang_vaname();            
-            row[10] = list.get(i).getNil_udang_vaname();            
-            row[11] = list.get(i).getPro_nila();            
-            row[12] = list.get(i).getNil_nila();            
-            row[13] = list.get(i).getPro_bandeng();            
-            row[14] = list.get(i).getNil_bandeng();            
-            row[15] = list.get(i).getPro_lele();            
-            row[16] = list.get(i).getNil_lele();
+        Object[] row = new Object[16];
+        for(int i = 0; i < list.size(); i++){            
+            row[0] = list.get(i).getNama();
+            row[1] = list.get(i).getDesa();
+            row[2] = list.get(i).getKecamatan();
+            row[3] = list.get(i).getBulan();
+            row[4] = list.get(i).getPenyuluh();
+            row[5] = list.get(i).getLuas_lahan();
+            row[6] = list.get(i).getPro_udang_windu();
+            row[7] = list.get(i).getPro_udang_vaname();
+            row[8] = list.get(i).getPro_nila();
+            row[9] = list.get(i).getPro_bandeng();
+            row[10] = list.get(i).getPro_lele();
+            row[11] = list.get(i).getNil_udang_windu();
+            row[12] = list.get(i).getNil_udang_vaname();
+            row[13] = list.get(i).getNil_nila();
+            row[14] = list.get(i).getNil_bandeng();
+            row[15] = list.get(i).getNil_lele();
             model.addRow(row);
         }
         tbl_benih.setModel(model);

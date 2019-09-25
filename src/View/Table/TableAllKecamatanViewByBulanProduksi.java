@@ -5,12 +5,17 @@
  */
 package View.Table;
 
-import Model.ProduksiModel;
+import Model.View.ProduksiPengolahanView;
+import Model.koneksi;
 import View.Home;
 import java.awt.Color;
 import java.awt.Component;
 import java.sql.SQLException; 
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -27,65 +32,57 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
     public DefaultTableModel tblmodel;
     String header[] ={"NAMA", "KECAMATAN", "PENYULUH", "BULAN", "ALAMAT", "JENIS OLAHAN",
      "PRODUK OLAHAN", "PRODUKSI", "NILAI PRODUKSI", "KETERANGAN"};
-    ProduksiModel pro = new ProduksiModel();
     /**
      * Creates new form TableKecamatan
      */
     
     
     public TableAllKecamatanViewByBulanProduksi() {
-        initComponents();
-        tblmodel = new DefaultTableModel(null, header);
-        tbl_kolam.setModel(tblmodel);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        try {
-//            pro.Tampil(this);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(TableAllKecamatanViewByBulanProduksi.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+//        initComponents();
+//        tblmodel = new DefaultTableModel(null, header);
+//        tbl_kolam.setModel(tblmodel);
+//        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public TableAllKecamatanViewByBulanProduksi(String table) {
         initComponents();
         tblmodel = new DefaultTableModel(null, header);
-        tbl_kolam.setModel(tblmodel);
+        tbl_produksi.setModel(tblmodel);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     
-    public void setColomnWidth(int kolom)
-  {
-      DefaultTableColumnModel dtcm = (DefaultTableColumnModel) tbl_kolam.
-                            getColumnModel();
-      TableColumn kolomtabel = dtcm.getColumn(kolom);
-      int lebar = 0;
-      int margin = 10;
-      int a;
-      
-      TableCellRenderer renderer = kolomtabel.getHeaderRenderer();
-      if (renderer ==null){
-          renderer = tbl_kolam.getTableHeader().getDefaultRenderer();
-      }
-      Component komponen = renderer.getTableCellRendererComponent(tbl_kolam, 
-                        kolomtabel.getHeaderValue(), false, false, 0, 0);
-      lebar = komponen.getPreferredSize().width;
-      for (a = 0; a< tbl_kolam.getRowCount(); a++){
-          renderer = tbl_kolam.getCellRenderer(a, kolom);
-          komponen = renderer.getTableCellRendererComponent(tbl_kolam, 
-                  tbl_kolam.getValueAt(a, kolom), false, false, a, kolom);
-          int lebarKolom = komponen.getPreferredSize().width;
-          lebar = Math.max(lebar, lebarKolom);
-      }
-      lebar = lebar + margin;
-      kolomtabel.setPreferredWidth(lebar);
-  
-  }
-    public void setLebarKolom(){
-      int a;
-      for(a =0; a< tbl_kolam.getColumnCount(); a++){
-          setColomnWidth(a);
-      }
+    public ArrayList<ProduksiPengolahanView> getData(String bulan){
+        ArrayList<ProduksiPengolahanView> list = new ArrayList<ProduksiPengolahanView>();
+        Connection con = koneksi.getKoneksi();
+        Statement st;
+        ResultSet rs;
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM tbl_produksi_pengolahan WHERE bulan = '"+cb_bulan.getSelectedItem().toString()+"'");
+            
+            ProduksiPengolahanView view;
+            while(rs.next()){
+                view = new ProduksiPengolahanView(
+                        rs.getString("NAMA"),
+                        rs.getString("KECAMATAN"),
+                        rs.getString("PENYULUH"),
+                        rs.getString("BULAN"),
+                        rs.getString("ALAMAT"),
+                        rs.getString("JENIS_OLAHAN"),
+                        rs.getString("PRODUK_OLAHAN"),
+                        rs.getInt("PRODUKSI"),
+                        rs.getInt("NIL_PRODUKSI"),
+                        rs.getString("KETERANGAN")
+                );
+                list.add(view);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ProduksiPengolahanView.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return list;
+    }
     
-  }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,11 +102,11 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
         cb_bulan = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_kolam = new javax.swing.JTable();
+        tbl_produksi = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        tambahButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
 
@@ -168,8 +165,13 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
         );
 
         cb_bulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH BULAN ---", "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER" }));
+        cb_bulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_bulanActionPerformed(evt);
+            }
+        });
 
-        tbl_kolam.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_produksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -180,13 +182,13 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbl_kolam.setFocusable(false);
-        tbl_kolam.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tbl_kolam.setRowHeight(25);
-        tbl_kolam.setSelectionBackground(new java.awt.Color(132, 205, 238));
-        tbl_kolam.setShowVerticalLines(false);
-        tbl_kolam.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tbl_kolam);
+        tbl_produksi.setFocusable(false);
+        tbl_produksi.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tbl_produksi.setRowHeight(25);
+        tbl_produksi.setSelectionBackground(new java.awt.Color(132, 205, 238));
+        tbl_produksi.setShowVerticalLines(false);
+        tbl_produksi.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tbl_produksi);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/garbage.png"))); // NOI18N
         jButton4.setText("Hapus");
@@ -198,18 +200,18 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/add.png"))); // NOI18N
-        jButton3.setText("Tambah Data");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tambahButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/add.png"))); // NOI18N
+        tambahButton.setText("Tambah Data");
+        tambahButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tambahButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        tambahButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                tambahButtonMouseClicked(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        tambahButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                tambahButtonActionPerformed(evt);
             }
         });
 
@@ -220,14 +222,14 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tambahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tambahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -318,11 +320,11 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void tambahButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tambahButtonMouseClicked
         // TODO add your handling code here:
 //        new IsiDataKolam().show();
         dispose();
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_tambahButtonMouseClicked
 
     private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
         // TODO add your handling code here:
@@ -330,11 +332,33 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton14MouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void tambahButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahButtonActionPerformed
         // TODO add your handling code here:
 //        new IsiDataKolam().show();
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_tambahButtonActionPerformed
+
+    private void cb_bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_bulanActionPerformed
+        // TODO add your handling code here:
+        ArrayList<ProduksiPengolahanView> list = getData(cb_bulan.getSelectedItem().toString());
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(header);
+        Object[] row = new Object[10];
+        for(int i = 0; i < list.size(); i++){
+            row[0] = list.get(i).getNama();
+            row[1] = list.get(i).getKecamatan();
+            row[2] = list.get(i).getPenyuluh();
+            row[3] = list.get(i).getBulan();
+            row[4] = list.get(i).getAlamat();
+            row[5] = list.get(i).getJenis_olahan();
+            row[6] = list.get(i).getProduk_olahan();
+            row[7] = list.get(i).getProduksi();
+            row[8] = list.get(i).getNil_produksi();
+            row[9] = list.get(i).getKeterangan();
+            model.addRow(row);
+        }
+        tbl_produksi.setModel(model);
+    }//GEN-LAST:event_cb_bulanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,7 +414,6 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> cb_bulan;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
@@ -402,6 +425,7 @@ public class TableAllKecamatanViewByBulanProduksi extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tbl_kolam;
+    private javax.swing.JButton tambahButton;
+    public javax.swing.JTable tbl_produksi;
     // End of variables declaration//GEN-END:variables
 }

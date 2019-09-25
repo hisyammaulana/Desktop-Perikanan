@@ -28,8 +28,7 @@ public class KolamView {
     
     public KolamView(){}
 
-    public KolamView(String id, String desa, String kecamatan, String bulan, String penyuluh, int pro_lele, int nil_lele, int pro_nila, int nil_nila, int pro_kaper, int nil_kaper, int pro_nilem, int nil_nilem, int pro_gurame, int nil_gurame) {
-        this.id = id;
+    public KolamView(String desa, String kecamatan, String bulan, String penyuluh, int pro_lele, int nil_lele, int pro_nila, int nil_nila, int pro_kaper, int nil_kaper, int pro_nilem, int nil_nilem, int pro_gurame, int nil_gurame) {
         this.desa = desa;
         this.kecamatan = kecamatan;
         this.bulan = bulan;
@@ -44,14 +43,6 @@ public class KolamView {
         this.nil_nilem = nil_nilem;
         this.pro_gurame = pro_gurame;
         this.nil_gurame = nil_gurame;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getDesa() {

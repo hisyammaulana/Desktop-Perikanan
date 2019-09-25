@@ -5,6 +5,7 @@
  */
 package View.Table;
 
+import Model.View.TambakView;
 import Model.koneksi;
 import View.Home;
 import View.IsiData.IsiDataKolam;
@@ -16,6 +17,11 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,7 +31,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableKecamatanViewByBulanTambak extends javax.swing.JFrame {
     public DefaultTableModel tblmodel;
-    String header[] = {"DESA","KECAMATAN","BULAN",
+    String header[] = {"DESA","KECAMATAN","PENYULUH", "BULAN",
                         "PRODUKSI RUMPUT LAUT", "NILAI PRODUKSI RUMPUT LAUT",
                         "PRODUKSI UDANG WINDU", "NILAI PRODUKSI UDANG WINDU",
                         "PRODUKSI UDANG VANAME SEDERHANA", "NILAI PRODUKSI UDANG VANAME SEDERHANA",
@@ -42,45 +48,57 @@ public class TableKecamatanViewByBulanTambak extends javax.swing.JFrame {
     public TableKecamatanViewByBulanTambak() {
 //        initComponents();
 //        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
-//        jTable1.getTableHeader().setFont(new Font("Segoee UI", Font.BOLD, 12));
-//        jTable1.getTableHeader().setOpaque(false);
-//        jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
-//        jTable1.getTableHeader().setForeground(new Color(255,255,255));
-//        jTable1.setRowHeight(25);
     }
 
     public TableKecamatanViewByBulanTambak(String table) {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         tblmodel = new DefaultTableModel(null,header);
-        tbl_kolam.setModel(tblmodel);
-
+        tbl_tambak.setModel(tblmodel);
+    }
+    
+    public ArrayList<TambakView> getData(String kecamatan){
+        ArrayList<TambakView> list = new ArrayList<TambakView>();
+        Connection con = koneksi.getKoneksi();
+        Statement st;
+        ResultSet rs;
         try {
-            Connection con = koneksi.getKoneksi();
-            String sql = "SELECT * FROM "+table+" WHERE bulan = '"+(String) cb_bulan.getSelectedItem()+"' && kecamatan = '"+(String) cbKecamatan.getSelectedItem()+"'";
-            PreparedStatement statement = con.prepareStatement(sql);
-//            statement.setString(1, (String)cb_bulan.getSelectedItem());
-            ResultSet res = statement.executeQuery(sql);
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM tbl_produksi_tambak WHERE bulan = '"+cb_bulan.getSelectedItem().toString()+"' AND "
+                    + "kecamatan = '"+cbKecamatan.getSelectedItem().toString()+"'");
             
-            while (res.next()) {
-                Object[] ob= new Object[22];
-                ob[0] = res.getString(2);
-                ob[1] = res.getString(3);
-                ob[2] = res.getString(4);
-                ob[3] = res.getString(5);
-                ob[4] = res.getString(6);
-                ob[5] = res.getString(7);
-                ob[6] = res.getString(8);
-                ob[7] = res.getString(9);
-                ob[8] = res.getString(10);
-                ob[9] = res.getString(11);
-                tblmodel.addRow(ob);
+            TambakView tv;
+            while(rs.next()){
+                tv = new TambakView(
+                     rs.getString("DESA"),
+                     rs.getString("KECAMATAN"),
+                     rs.getString("PENYULUH"),
+                     rs.getString("BULAN"),
+                     rs.getInt("PRO_RUMPUT_LAUT"),
+                     rs.getInt("NIL_RUMPUT_LAUT"),
+                     rs.getInt("PRO_UDANG_WINDU"),
+                     rs.getInt("NIL_UDANG_WINDU"),
+                     rs.getInt("PRO_UDANG_VANAME_SEDERHANA"),
+                     rs.getInt("NIL_UDANG_VANAME_SEDERHANA"),
+                     rs.getInt("PRO_UDANG_VANAME_SEMI"),
+                     rs.getInt("NIL_UDANG_VANAME_SEMI"),
+                     rs.getInt("PRO_UDANG_VANAME_INTENSIF"),
+                     rs.getInt("NIL_UDANG_VANAME_INTENSIF"),
+                     rs.getInt("PRO_UDANG_PUTIH"),
+                     rs.getInt("NIL_UDANG_PUTIH"),
+                     rs.getInt("PRO_UDANG_LOKAL"),
+                     rs.getInt("NIL_UDANG_LOKAL"),
+                     rs.getInt("PRO_BANDENG"),
+                     rs.getInt("NIL_BANDENG"),
+                     rs.getInt("PRO_LELE"),
+                     rs.getInt("NIL_LELE")
+                );
+                list.add(tv);
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException e) {
+            Logger.getLogger(TambakView.class.getName()).log(Level.SEVERE, null, e);
         }
-        
+        return list;
     }
 
     /**
@@ -100,7 +118,7 @@ public class TableKecamatanViewByBulanTambak extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_kolam = new javax.swing.JTable();
+        tbl_tambak = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         btnHapus = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
@@ -167,7 +185,7 @@ public class TableKecamatanViewByBulanTambak extends javax.swing.JFrame {
                 .addGap(0, 28, Short.MAX_VALUE))
         );
 
-        tbl_kolam.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_tambak.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -178,13 +196,13 @@ public class TableKecamatanViewByBulanTambak extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbl_kolam.setFocusable(false);
-        tbl_kolam.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tbl_kolam.setRowHeight(25);
-        tbl_kolam.setSelectionBackground(new java.awt.Color(132, 205, 238));
-        tbl_kolam.setShowVerticalLines(false);
-        tbl_kolam.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tbl_kolam);
+        tbl_tambak.setFocusable(false);
+        tbl_tambak.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tbl_tambak.setRowHeight(25);
+        tbl_tambak.setSelectionBackground(new java.awt.Color(132, 205, 238));
+        tbl_tambak.setShowVerticalLines(false);
+        tbl_tambak.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tbl_tambak);
 
         btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/garbage.png"))); // NOI18N
         btnHapus.setText("Hapus");
@@ -370,6 +388,36 @@ public class TableKecamatanViewByBulanTambak extends javax.swing.JFrame {
 
     private void btnLihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatActionPerformed
         // TODO add your handling code here:
+        ArrayList<TambakView> list = getData(cb_bulan.getSelectedItem().toString() + cbKecamatan.getSelectedItem().toString());
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(header);
+        Object[] row = new Object[22];
+        for(int i = 0; i < list.size(); i++){
+            row[0] = list.get(i).getDesa();
+            row[1] = list.get(i).getKecamatan();
+            row[2] = list.get(i).getPenyuluh();
+            row[3] = list.get(i).getBulan();
+            row[4] = list.get(i).getPro_rumput_laut();
+            row[5] = list.get(i).getNil_rumput_laut();
+            row[6] = list.get(i).getPro_udang_windu();
+            row[7] = list.get(i).getNil_udang_windu();
+            row[8] = list.get(i).getPro_udang_vaname_sederhana();
+            row[9] = list.get(i).getNil_udang_vaname_sederhana();
+            row[10] = list.get(i).getPro_udang_vaname_semi();
+            row[11] = list.get(i).getNil_udang_vaname_semi();
+            row[12] = list.get(i).getPro_udang_vaname_intensif();
+            row[13] = list.get(i).getNil_udang_vaname_intensif();
+            row[14] = list.get(i).getPro_udang_putih();
+            row[15] = list.get(i).getNil_udang_putih();
+            row[16] = list.get(i).getPro_udang_lokal();
+            row[17] = list.get(i).getNil_udang_lokal();
+            row[18] = list.get(i).getPro_bandeng();
+            row[19] = list.get(i).getNil_bandeng();
+            row[20] = list.get(i).getPro_lele();
+            row[21] = list.get(i).getNil_lele();
+            model.addRow(row);
+            }
+        tbl_tambak.setModel(model);
     }//GEN-LAST:event_btnLihatActionPerformed
 
     /**
@@ -434,6 +482,6 @@ public class TableKecamatanViewByBulanTambak extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_kolam;
+    private javax.swing.JTable tbl_tambak;
     // End of variables declaration//GEN-END:variables
 }

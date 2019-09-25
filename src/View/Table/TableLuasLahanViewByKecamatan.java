@@ -5,6 +5,7 @@
  */
 package View.Table;
 
+import Model.View.LuasLahanView;
 import Model.koneksi;
 import View.Home;
 import View.IsiData.IsiDataLuasLahan;
@@ -13,7 +14,11 @@ import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,60 +28,58 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
     public DefaultTableModel tblmodel;
-    String header[] = {"DESA","JUMLAH RTP TAMBAK SEDERHANA","LUAS LAHAN TAMBAK SEDERHANA",
-                        "JUMLAH RTP TAMBAK SEMI INTENSIF" ,"LUAS LAHAN TAMBAK TAMBAK SEMI INTENSIF",
+    String header[] = {"DESA","KECAMATAN","BULAN","JUMLAH RTP TAMBAK","LUAS LAHAN TAMBAK SEDERHANA",
+                        "JUMLAH RTP TAMBAK SEMI INTENSIF" ,"LUAS LAHAN TAMBAK SEMI INTENSIF",
                         "JUMLAH RTP TAMBAK INTENSIF", "LUAS LAHAN TAMBAK INTENSIF", "JUMLAH RTP KOLAM", 
                         "LUAS LAHAN KOLAM", "JUMLAH RTP RUMPUT LAUT", "LUAS LAHAN RUMPUT LAUT"};
     /**
      * Creates new form TableKecamatan
      */
-//    public TableAllKecamatanViewByBulanKolam() {
-//        initComponents();
-//        setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        
-//        tbl_kolam.getTableHeader().setFont(new Font("Segoee UI", Font.BOLD, 12));
-//        tbl_kolam.getTableHeader().setOpaque(false);
-//        tbl_kolam.getTableHeader().setBackground(new Color(32, 136, 203));
-//        tbl_kolam.getTableHeader().setForeground(new Color(255,255,255));
-//        tbl_kolam.setRowHeight(25);
-//    }
 
     public TableLuasLahanViewByKecamatan(String table) {
         initComponents();
         tblmodel = new DefaultTableModel(null,header);
         tbl_luas_lahan.setModel(tblmodel);
-//        tblmodel.getDataVector().removeAllElements();
-//        tblmodel.fireTableDataChanged();
-        try {
-            Connection con = koneksi.getKoneksi();
-            String sql = "SELECT * FROM "+table+";";
-            PreparedStatement statement = con.prepareStatement(sql);
-//            statement.setString(1, (String)cb_bulan.getSelectedItem());
-            ResultSet res = statement.executeQuery(sql);
-            
-            while (res.next()) {
-                Object[] ob= new Object[22];
-                ob[0] = res.getString(2);
-                ob[1] = res.getString(6);
-                ob[2] = res.getString(7);
-                ob[3] = res.getString(8);
-                ob[4] = res.getString(9);
-                ob[5] = res.getString(10);
-                ob[6] = res.getString(11);
-                ob[7] = res.getString(12);
-                ob[8] = res.getString(13);
-                ob[9] = res.getString(14);
-                ob[10] = res.getString(14);
-                tblmodel.addRow(ob);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public TableLuasLahanViewByKecamatan(String kolam, String kecamatan) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        tblmodel = new DefaultTableModel(null,header);
+        tbl_luas_lahan.setModel(tblmodel);    
+    }
+    
+    public ArrayList<LuasLahanView> getData(String kecamatan){
+        ArrayList<LuasLahanView> list = new ArrayList<LuasLahanView>();
+        Connection con = koneksi.getKoneksi();
+        Statement st;
+        ResultSet rs;
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM tbl_luas_lahan_rtp WHERE kecamatan = '"+cb_kecamatan.getSelectedItem().toString()+"'");
+            LuasLahanView bv;
+            while(rs.next()){
+                bv = new LuasLahanView(
+                        rs.getString("DESA"),
+                        rs.getString("KECAMATAN"),
+                        rs.getString("PENYULUH"),
+                        rs.getString("BULAN"),
+                        rs.getInt("JML_RTP_TAMBAK_SEDERHANA"),
+                        rs.getInt("LUAS_TAMBAK_SEDERHANA"),
+                        rs.getInt("JML_RTP_TAMBAK_SEMI"),
+                        rs.getInt("LUAS_TAMBAK_SEMI"),
+                        rs.getInt("JML_RTP_TAMBAK_INTENSIF"),
+                        rs.getInt("LUAS_TAMBAK_INTENSIF"),
+                        rs.getInt("JML_RTP_KOLAM"),
+                        rs.getInt("LUAS_KOLAM"),
+                        rs.getInt("JML_RTP_RUMPUT_LAUT"),
+                        rs.getInt("LUAS_LAHAN_RUMPUT_LAUT") 
+                );
+                list.add(bv);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(LuasLahanView.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return list;
     }
 
     /**
@@ -166,6 +169,11 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
         cb_kecamatan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cb_kecamatanItemStateChanged(evt);
+            }
+        });
+        cb_kecamatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_kecamatanActionPerformed(evt);
             }
         });
 
@@ -365,6 +373,32 @@ public class TableLuasLahanViewByKecamatan extends javax.swing.JFrame {
     private void cb_kecamatanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_kecamatanItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_kecamatanItemStateChanged
+
+    private void cb_kecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_kecamatanActionPerformed
+        // TODO add your handling code here:
+        ArrayList<LuasLahanView> list = getData(cb_kecamatan.getSelectedItem().toString());
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(header);
+        Object[] row = new Object[15];
+        for(int i = 0; i < list.size(); i++){
+            row[0] = list.get(i).getDesa();
+            row[1] = list.get(i).getKecamatan();
+            row[2] = list.get(i).getPenyuluh();
+            row[3] = list.get(i).getBulan();
+            row[4] = list.get(i).getJml_rtp_tambak_sederhana();
+            row[5] = list.get(i).getLuas_tambak_sederhana();
+            row[6] = list.get(i).getJml_rtp_tambak_semi();
+            row[7] = list.get(i).getLuas_tambak_semi();
+            row[8] = list.get(i).getJml_rtp_tambak_intensif();
+            row[9] = list.get(i).getLuas_tambak_intensif();
+            row[10] = list.get(i).getJml_rtp_kolam();
+            row[11] = list.get(i).getLuas_kolam();
+            row[12] = list.get(i).getJml_rtp_rumput_laut();
+            row[13] = list.get(i).getLuas_lahan_rumput_laut();
+            model.addRow(row);
+        }
+        tbl_luas_lahan.setModel(model);
+    }//GEN-LAST:event_cb_kecamatanActionPerformed
 
     /**
      * @param args the command line arguments

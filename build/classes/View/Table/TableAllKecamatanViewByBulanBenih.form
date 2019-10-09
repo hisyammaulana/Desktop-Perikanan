@@ -271,7 +271,7 @@
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton5" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="btnPrint" min="-2" pref="133" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -292,7 +292,7 @@
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
-                              <Component id="jButton5" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="btnPrint" min="-2" pref="41" max="-2" attributes="0"/>
                               <EmptySpace pref="221" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -339,10 +339,13 @@
                     <Property name="text" type="java.lang.String" value="Excel"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton5">
+                <Component class="javax.swing.JButton" name="btnPrint">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="PDF"/>
+                    <Property name="text" type="java.lang.String" value="Print"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

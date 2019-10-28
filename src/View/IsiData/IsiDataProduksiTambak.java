@@ -9,6 +9,7 @@ package View.IsiData;
 import View.Table.TableKecamatanViewByBulanKolam;
 import Model.TambakModel;
 import Model.koneksi;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -203,39 +204,124 @@ public class IsiDataProduksiTambak extends javax.swing.JFrame {
 
         jLabel16.setText("Desa");
 
+        txt_desa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_desaActionPerformed(evt);
+            }
+        });
+        txt_desa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_desaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_desaKeyReleased(evt);
+            }
+        });
+
         txt_pro_udang_windu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_pro_udang_winduActionPerformed(evt);
             }
         });
+        txt_pro_udang_windu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pro_udang_winduKeyTyped(evt);
+            }
+        });
 
         jLabel17.setText("Kecamatan");
+
+        txt_pro_udang_lokal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pro_udang_lokalKeyTyped(evt);
+            }
+        });
 
         jLabel20.setText("Produksi Udang Lokal");
 
         jLabel21.setText("Produksi Udang Windu");
 
+        txt_nil_udang_windu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nil_udang_winduKeyTyped(evt);
+            }
+        });
+
         jLabel22.setText("Nilai Produksi Udang Lokal");
 
         jLabel24.setText("Nilai Produksi udang Windu");
 
+        txt_nil_udang_lokal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nil_udang_lokalKeyTyped(evt);
+            }
+        });
+
         jLabel25.setText("Produksi Bandeng");
 
+        txt_pro_bandeng.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pro_bandengKeyTyped(evt);
+            }
+        });
+
         jLabel26.setText("Produksi Udang Vaname Sederhana");
+
+        txt_pro_udang_vaname_sederhana.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pro_udang_vaname_sederhanaKeyTyped(evt);
+            }
+        });
+
+        txt_nil_udang_vaname_sederhana.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nil_udang_vaname_sederhanaKeyTyped(evt);
+            }
+        });
 
         jLabel27.setText("Nilai Produksi Udang Vaname Sederhana");
 
         jLabel28.setText("Nilai Produksi Bandeng");
 
+        txt_nil_bandeng.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nil_bandengKeyTyped(evt);
+            }
+        });
+
         cb_kecamatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Pilih Kecamatan ---", "BANJARHARJO", "BANTARKAWUNG", "BREBES", "BUMIAYU", "BULAKAMBA", "JATIBARANG", "KERSANA", "KETANGGUNGAN", "LARANGAN", "LOSARI", "PAGUYANGAN", "SALEM", "SIRAMPOG", "SONGGOM", "TANJUNG", "TONJONG", "WANASARI" }));
 
         jLabel29.setText("Produksi Udang Putih");
 
+        txt_pro_udang_putih.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pro_udang_putihKeyTyped(evt);
+            }
+        });
+
         jLabel30.setText("Produksi Lele");
+
+        txt_pro_lele.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pro_leleKeyTyped(evt);
+            }
+        });
 
         jLabel31.setText("Nilai Produksi udang Putih");
 
+        txt_nil_udang_putih.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nil_udang_putihKeyTyped(evt);
+            }
+        });
+
         jLabel32.setText("Nilai Produksi Lele");
+
+        txt_nil_lele.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nil_leleKeyTyped(evt);
+            }
+        });
 
         cb_penyuluh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH PENYULUH ---" }));
 
@@ -243,7 +329,7 @@ public class IsiDataProduksiTambak extends javax.swing.JFrame {
 
         jLabel34.setText("Bulan");
 
-        cb_bulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Pilih Bulan ---", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+        cb_bulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- PILIH BULAN ---", "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER" }));
 
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -252,15 +338,51 @@ public class IsiDataProduksiTambak extends javax.swing.JFrame {
             }
         });
 
+        txt_pro_udang_vaname_semi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pro_udang_vaname_semiKeyTyped(evt);
+            }
+        });
+
         jLabel35.setText("Produksi Udang Vaname Semi");
 
         jLabel36.setText("Nilai Produksi Udang Vaname Semi");
 
+        txt_nil_udang_vaname_semi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nil_udang_vaname_semiKeyTyped(evt);
+            }
+        });
+
         jLabel37.setText("Produksi Udang Vaname Intensif");
+
+        txt_pro_udang_vaneme_intensif.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pro_udang_vaneme_intensifKeyTyped(evt);
+            }
+        });
 
         jLabel38.setText("Nilai Produksi Udang Vaname Intensif");
 
+        txt_nil_udang_vaneme_intensif.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nil_udang_vaneme_intensifKeyTyped(evt);
+            }
+        });
+
         jLabel39.setText("Produksi Rumput Laut");
+
+        txt_pro_rumput_laut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pro_rumput_lautKeyTyped(evt);
+            }
+        });
+
+        txt_nil_rumput_laut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nil_rumput_lautKeyTyped(evt);
+            }
+        });
 
         jLabel40.setText("Nilai Produksi Rumput Laut");
 
@@ -541,6 +663,201 @@ public class IsiDataProduksiTambak extends javax.swing.JFrame {
     private void txt_pro_udang_winduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pro_udang_winduActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_pro_udang_winduActionPerformed
+
+    private void txt_desaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_desaActionPerformed
+         // TODO add your handling code here:
+    }//GEN-LAST:event_txt_desaActionPerformed
+
+    private void txt_desaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_desaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_desaKeyPressed
+
+    private void txt_desaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_desaKeyReleased
+        // TODO add your handling code here:
+        int pos = txt_desa.getCaretPosition();
+        txt_desa.setText(txt_desa.getText().toUpperCase());
+        txt_desa.setCaretPosition(pos);
+    }//GEN-LAST:event_txt_desaKeyReleased
+
+    private void txt_pro_udang_winduKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pro_udang_winduKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_pro_udang_winduKeyTyped
+
+    private void txt_nil_udang_winduKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nil_udang_winduKeyTyped
+         // TODO add your handling code here:
+         char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_nil_udang_winduKeyTyped
+
+    private void txt_pro_udang_vaname_sederhanaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pro_udang_vaname_sederhanaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_pro_udang_vaname_sederhanaKeyTyped
+
+    private void txt_nil_udang_vaname_sederhanaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nil_udang_vaname_sederhanaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_nil_udang_vaname_sederhanaKeyTyped
+
+    private void txt_pro_udang_vaname_semiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pro_udang_vaname_semiKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_pro_udang_vaname_semiKeyTyped
+
+    private void txt_nil_udang_vaname_semiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nil_udang_vaname_semiKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_nil_udang_vaname_semiKeyTyped
+
+    private void txt_pro_udang_vaneme_intensifKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pro_udang_vaneme_intensifKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_pro_udang_vaneme_intensifKeyTyped
+
+    private void txt_nil_udang_vaneme_intensifKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nil_udang_vaneme_intensifKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_nil_udang_vaneme_intensifKeyTyped
+
+    private void txt_pro_udang_lokalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pro_udang_lokalKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_pro_udang_lokalKeyTyped
+
+    private void txt_nil_udang_lokalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nil_udang_lokalKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_nil_udang_lokalKeyTyped
+
+    private void txt_pro_bandengKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pro_bandengKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_pro_bandengKeyTyped
+
+    private void txt_nil_bandengKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nil_bandengKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_nil_bandengKeyTyped
+
+    private void txt_pro_leleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pro_leleKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_pro_leleKeyTyped
+
+    private void txt_nil_leleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nil_leleKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_nil_leleKeyTyped
+
+    private void txt_pro_rumput_lautKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pro_rumput_lautKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_pro_rumput_lautKeyTyped
+
+    private void txt_nil_rumput_lautKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nil_rumput_lautKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_nil_rumput_lautKeyTyped
+
+    private void txt_pro_udang_putihKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pro_udang_putihKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_pro_udang_putihKeyTyped
+
+    private void txt_nil_udang_putihKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nil_udang_putihKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) 
+                || c==KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_nil_udang_putihKeyTyped
 
     /**
      * @param args the command line arguments

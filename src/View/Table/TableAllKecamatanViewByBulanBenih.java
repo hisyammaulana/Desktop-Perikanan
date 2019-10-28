@@ -21,6 +21,12 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
+
+import java.io.FileOutputStream;
+import com.lowagie.text.Document;
+import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfTemplate;
+import com.lowagie.text.pdf.PdfWriter;
 /**
  *
  * @author tantowi
@@ -401,6 +407,7 @@ public class TableAllKecamatanViewByBulanBenih extends javax.swing.JFrame {
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnPrintActionPerformed
 
     /**

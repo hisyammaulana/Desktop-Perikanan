@@ -507,6 +507,11 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_desa">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_desaActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_desaKeyPressed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_desaKeyReleased"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -514,6 +519,7 @@
                 <Component class="javax.swing.JTextField" name="txt_pro_udang_windu">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_pro_udang_winduActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pro_udang_winduKeyTyped"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -525,6 +531,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_pro_udang_lokal">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pro_udang_lokalKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -540,6 +549,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nil_udang_windu">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nil_udang_winduKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -555,6 +567,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nil_udang_lokal">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nil_udang_lokalKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -565,6 +580,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_pro_bandeng">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pro_bandengKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -575,11 +593,17 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_pro_udang_vaname_sederhana">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pro_udang_vaname_sederhanaKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nil_udang_vaname_sederhana">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nil_udang_vaname_sederhanaKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -595,6 +619,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nil_bandeng">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nil_bandengKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -635,6 +662,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_pro_udang_putih">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pro_udang_putihKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -645,6 +675,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_pro_lele">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pro_leleKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -655,6 +688,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nil_udang_putih">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nil_udang_putihKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -665,6 +701,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nil_lele">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nil_leleKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -696,19 +735,19 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="13">
-                        <StringItem index="0" value="--- Pilih Bulan ---"/>
-                        <StringItem index="1" value="Januari"/>
-                        <StringItem index="2" value="Februari"/>
-                        <StringItem index="3" value="Maret"/>
-                        <StringItem index="4" value="April"/>
-                        <StringItem index="5" value="Mei"/>
-                        <StringItem index="6" value="Juni"/>
-                        <StringItem index="7" value="Juli"/>
-                        <StringItem index="8" value="Agustus"/>
-                        <StringItem index="9" value="September"/>
-                        <StringItem index="10" value="Oktober"/>
-                        <StringItem index="11" value="November"/>
-                        <StringItem index="12" value="Desember"/>
+                        <StringItem index="0" value="--- PILIH BULAN ---"/>
+                        <StringItem index="1" value="JANUARI"/>
+                        <StringItem index="2" value="FEBRUARI"/>
+                        <StringItem index="3" value="MARET"/>
+                        <StringItem index="4" value="APRIL"/>
+                        <StringItem index="5" value="MEI"/>
+                        <StringItem index="6" value="JUNI"/>
+                        <StringItem index="7" value="JULI"/>
+                        <StringItem index="8" value="AGUSTUS"/>
+                        <StringItem index="9" value="SEPTEMBER"/>
+                        <StringItem index="10" value="OKTOBER"/>
+                        <StringItem index="11" value="NOVEMBER"/>
+                        <StringItem index="12" value="DESEMBER"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -726,6 +765,9 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_pro_udang_vaname_semi">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pro_udang_vaname_semiKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -741,6 +783,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nil_udang_vaname_semi">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nil_udang_vaname_semiKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -751,6 +796,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_pro_udang_vaneme_intensif">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pro_udang_vaneme_intensifKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -761,6 +809,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nil_udang_vaneme_intensif">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nil_udang_vaneme_intensifKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -771,11 +822,17 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_pro_rumput_laut">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pro_rumput_lautKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nil_rumput_laut">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nil_rumput_lautKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>

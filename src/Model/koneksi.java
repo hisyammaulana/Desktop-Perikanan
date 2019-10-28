@@ -21,8 +21,8 @@ public class koneksi {
         {
             try {
                 String url="jdbc:mysql://localhost/db_perikanan";
-                String username= "noobs";
-                String password= "noobs";
+                String username= "root";
+                String password= "";
                 
                 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
                 koneksi =DriverManager.getConnection(url, username, password);

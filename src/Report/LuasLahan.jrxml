@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Luas Lahan" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa8bdbcb-debb-4e94-b58d-8249fb6d74ce">
+	<property name="ireport.zoom" value="0.8264462809917359"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM tbl_luas_lahan_rtp]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kecamatan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penyuluh" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bulan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jml_rtp_tambak_sederhana" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="luas_tambak_sederhana" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jml_rtp_tambak_semi" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="luas_tambak_semi" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jml_rtp_tambak_intensif" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="luas_tambak_intensif" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jml_rtp_kolam" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="luas_kolam" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jml_rtp_rumput_laut" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="luas_lahan_rumput_laut" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement x="240" y="5" width="323" height="22" uuid="cdf4923b-d05d-4c93-a88f-b61f3e1e598f"/>
+				<textElement>
+					<font size="18" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dinas Perikanan Kabupaten Brebes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="27" width="100" height="20" uuid="685c29a4-8602-4e93-a270-0c13492594c5"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement x="34" y="17" width="206" height="19" uuid="77181167-3d03-4d1a-ab04-bcf432241028"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Luas Lahan dan RTP Kecamatan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="236" y="33" width="100" height="1" uuid="7e35b852-40d0-4653-8978-f90737c2ea5a"/>
+			</line>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="626" y="11" width="100" height="20" uuid="c6c08988-f236-4f96-a61d-8f3c2f98703a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="36" y="44" width="206" height="19" uuid="c9f23684-7227-4725-a2ff-dc9a41d05327"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Penyuluh]]></text>
+			</staticText>
+			<line>
+				<reportElement x="96" y="57" width="100" height="1" uuid="b28049e2-a434-4520-bce0-49911f46f1b8"/>
+			</line>
+			<staticText>
+				<reportElement x="36" y="70" width="206" height="19" uuid="bf672467-3fba-4add-9669-7e407adc4cfa"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Bulan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="77" y="82" width="100" height="1" uuid="56628a01-016f-45ee-92a0-1bbb009b6278"/>
+			</line>
+			<textField>
+				<reportElement x="96" y="38" width="100" height="20" uuid="87585f95-b080-4c0c-87be-a713a6b75e8b"/>
+				<textFieldExpression><![CDATA[$F{penyuluh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="11" width="100" height="20" uuid="da606c97-ee43-4a5d-8384-26c460d0de87"/>
+				<textFieldExpression><![CDATA[$F{kecamatan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="63" width="100" height="20" uuid="d7602132-a149-4c7a-a2b9-ec58b523864f"/>
+				<textFieldExpression><![CDATA[$F{bulan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="166">
+			<rectangle>
+				<reportElement x="-15" y="15" width="100" height="55" uuid="7fc77d4c-4dc8-4a41-a440-39136897bd55"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="14" y="34" width="50" height="17" uuid="b6ff9bf2-033f-47c4-905e-03be9d51b02d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Desa]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="85" y="15" width="212" height="24" uuid="b1e19ffa-a4b8-4b34-84e6-ba1b8f24fc2c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="128" y="20" width="131" height="20" uuid="9aeee036-e906-47a9-b48e-05e21b9e2744"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Jumlah RTP Tambak]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="85" y="39" width="72" height="31" uuid="c7d01052-10dd-4848-a94f-40397275cbe8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="87" y="50" width="85" height="20" uuid="398690d1-d81b-42f0-b917-89db14850951"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Sederhana]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="157" y="39" width="70" height="31" uuid="214ca956-25e0-44ed-b48e-0da31d75c8c6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="172" y="42" width="47" height="17" uuid="f24c5854-1a6a-4d9d-90a3-9c704fc7baee"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Semi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="54" width="47" height="17" uuid="d49e49b8-1403-484b-b5fb-8614d58e20c4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Intensif]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="227" y="39" width="70" height="31" uuid="b40206ee-fbb9-4b40-b5e0-13d93c205e6b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="242" y="50" width="85" height="20" uuid="40589101-3c2e-4257-a71f-91da9943995a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Intensif]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="297" y="15" width="210" height="24" uuid="c225d593-7a51-4fe3-b859-5b2bdd1de38c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="339" y="20" width="131" height="20" uuid="e29c1d2d-7342-4d69-8300-ac549ded9a98"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Luas Lahan Tambak]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="297" y="39" width="70" height="31" uuid="45079d46-3cbe-44ad-9911-08ac6ebecc1e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="298" y="50" width="85" height="20" uuid="52689154-b97b-4353-a5f0-29a6c0454c81"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Sederhana]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="367" y="39" width="70" height="31" uuid="974497be-b359-413d-8fa7-734f8e50025d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="383" y="42" width="47" height="17" uuid="3b50052c-89a4-422a-8d82-619b742784c5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Semi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="54" width="47" height="17" uuid="965b48df-14a3-4fd2-ba4a-bef882ab51e8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Intensif]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="437" y="39" width="70" height="31" uuid="3608e40b-fb13-476b-8aa6-64c69350edbf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="445" y="47" width="63" height="20" uuid="98da4d74-16f6-4ff0-9cae-ee13b836c02d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Intensif]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="507" y="15" width="73" height="55" uuid="46f5bc3a-77a2-4211-a720-684932ea1473"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="519" y="22" width="50" height="17" uuid="81488199-a98b-437d-a067-aeeca9cda2b9"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="512" y="42" width="68" height="17" uuid="e8391634-09c1-4fc0-b202-49fe9821b173"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RTP Kolam]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="580" y="15" width="78" height="55" uuid="a11ea1bf-211d-452b-a6a5-eaee3a2a1945"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="601" y="22" width="50" height="17" uuid="cba5eabc-2eb7-47aa-ba6f-721d3f1832ad"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Luas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="585" y="42" width="78" height="17" uuid="0f31487d-0aea-473e-acb4-0c02febf298f"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lahan Kolam]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="658" y="15" width="78" height="55" uuid="5acd21f3-7161-4c4b-89e6-8921161004ce"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="669" y="22" width="71" height="17" uuid="064a368f-8079-47a6-84af-dc14c7fc98c6"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah RTP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="663" y="42" width="79" height="17" uuid="1c54ce71-b81f-4b59-8541-e29d854c9962"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rumput Laut]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="736" y="15" width="78" height="55" uuid="17516db8-f6b6-434d-a046-0203beb93f21"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="747" y="23" width="72" height="17" uuid="7ae62203-1d54-4636-ab62-49aef96cbcc0"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Luas Lahan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="742" y="42" width="81" height="17" uuid="adfcb4d9-4ea0-4c7c-95a9-e4c7d025e421"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rumput Laut]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-15" y="70" width="100" height="20" uuid="d864b43d-e76a-4f20-93d8-330f3b8e44d4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="85" y="70" width="72" height="20" uuid="0c7d3c38-39a1-4e71-8da4-eab1094dbc3e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="157" y="70" width="70" height="20" uuid="341ff555-8bb2-4730-9e84-413b33588995"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="70" width="70" height="20" uuid="e69059a7-0e95-4e71-995d-45e458b1b608"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="297" y="70" width="70" height="20" uuid="ccb3fa02-f39f-4893-820b-ec0ccb722402"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="367" y="70" width="70" height="20" uuid="cd7d69dc-9210-474b-a538-11fcf2bfd0c2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="70" width="70" height="20" uuid="0c473250-2cd2-427c-a8bd-a3de62e9be03"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="507" y="70" width="73" height="20" uuid="099631a3-b5b5-4047-853f-ef39c8658435"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="580" y="70" width="78" height="20" uuid="4677e2d5-0d5e-4748-97f3-e3387ff30b0f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="658" y="70" width="78" height="20" uuid="68ba0f9b-33e2-4047-ae4b-a7ab041b8efb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="736" y="70" width="78" height="20" uuid="835d9d28-29cb-4084-98fc-a6f7000d718b"/>
+			</rectangle>
+			<textField>
+				<reportElement x="-4" y="73" width="81" height="17" uuid="c7406b52-58db-49b5-8de4-e3919e910b25"/>
+				<textFieldExpression><![CDATA[$F{desa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="73" width="81" height="17" uuid="248019e8-c5a4-49e8-ab5f-c24307fb1254"/>
+				<textFieldExpression><![CDATA[$F{jml_rtp_tambak_sederhana}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="162" y="74" width="57" height="16" uuid="a39acb17-828e-4946-82f4-c34539fe0479"/>
+				<textFieldExpression><![CDATA[$F{jml_rtp_tambak_semi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="73" width="57" height="16" uuid="491de811-ac8d-47e3-9bcc-097499c9af45"/>
+				<textFieldExpression><![CDATA[$F{jml_rtp_tambak_intensif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="73" width="57" height="16" uuid="e0bbc589-5258-45ca-8400-116a9c1f00f3"/>
+				<textFieldExpression><![CDATA[$F{luas_tambak_sederhana}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="74" width="57" height="16" uuid="a23d69da-06df-422e-a330-0639034b76ae"/>
+				<textFieldExpression><![CDATA[$F{luas_tambak_semi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="73" width="57" height="16" uuid="766c7c35-f308-4f81-b0a3-318f7f7dc09c"/>
+				<textFieldExpression><![CDATA[$F{luas_tambak_intensif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="519" y="74" width="57" height="16" uuid="a966360c-2f92-4f61-803e-0fb52f4d376b"/>
+				<textFieldExpression><![CDATA[$F{jml_rtp_kolam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="594" y="74" width="57" height="16" uuid="22141826-a045-490b-9eff-f69c8caed705"/>
+				<textFieldExpression><![CDATA[$F{luas_kolam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="669" y="74" width="57" height="16" uuid="44ba0d14-e4a0-43a4-a84d-84098762423e"/>
+				<textFieldExpression><![CDATA[$F{jml_rtp_rumput_laut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="747" y="74" width="57" height="16" uuid="63471a3c-72e7-4a79-b84e-4c440685cc30"/>
+				<textFieldExpression><![CDATA[$F{luas_lahan_rumput_laut}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="118" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

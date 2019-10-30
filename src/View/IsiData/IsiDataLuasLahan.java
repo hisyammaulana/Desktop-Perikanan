@@ -6,7 +6,6 @@
 //input done
 package View.IsiData;
 
-import View.Table.TableKecamatanViewByBulanKolam;
 import Model.LuasModel;
 import Model.koneksi;
 import java.awt.event.KeyEvent;
@@ -580,15 +579,13 @@ public class IsiDataLuasLahan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_luas_lahan_rumput_lautKeyTyped
 
-<<<<<<< HEAD
     private void txt_desaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_desaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_desaActionPerformed
-=======
+
     private void txt_jml_rtp_tambak_semiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_jml_rtp_tambak_semiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_jml_rtp_tambak_semiActionPerformed
->>>>>>> origin
 
     /**
      * @param args the command line arguments
